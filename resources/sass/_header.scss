@@ -1,0 +1,55 @@
+.header {
+    &_wrap {
+        background-color: #fff;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        height: 48px;
+        z-index: 99;
+    }
+
+    &_wrapper {
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+
+    &_logo {
+        &_container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+        }
+    }
+
+    &_user {
+        &_container {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        &_link {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        &_name {
+            font-size: 14px;
+            color: #000;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        &_img {
+            border-radius: 50%;
+            height: 32px;
+            width: 32px;
+            margin: 0;
+        }
+    }
+}
+
+.container {
+    height: 100%;
+}

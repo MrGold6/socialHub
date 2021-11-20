@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.content {
+    margin-bottom: 15px;
+    position: relative;
+    float: right;
+}
+
+.side_bar {
+    min-height: 100% !important;
+}
+
+
+.header_wrap {
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 48px;
+    z-index: 99;
+}
+.header_wrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.header_logo_container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+.header_user_container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.header_user_link {
+    text-decoration: none;
+    cursor: pointer;
+}
+.header_user_name {
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+    margin-right: 10px;
+}
+.header_user_img {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    margin: 0;
+}
+
+.container {
+    height: 100%;
+}
+
+.my-container {
+    max-width: 960px;
+    margin: 0 auto;
+    height: 100%;
+}
+.my-wrapper {
+    margin-top: 60px;
+}
+
+.my-comment {
+    max-height: 50px !important;
+}
+
+body {
+    background-color: #edeef0 !important;
+}
+
+.content {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    margin-left: 10px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: #dce1e6 0px 1px 0px 0px, #e7e8ec 0px 0px 0px 1px;
+}
+
+.side_bar {
+    width: 151px;
+    float: left;
+}
+.side_bar_ol {
+    padding-left: 0;
+    list-style: none;
+    display: block;
+}
+.side_bar_li a {
+    padding: 0 6px;
+    align-items: center;
+    display: flex;
+    font-size: 13px;
+    font-weight: 400;
+    height: 30px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.side_bar_li a:hover {
+    background-color: rgba(174, 183, 194, 0.12);
+}
+.side_bar_li_text {
+    color: black;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    height: 30px;
+    line-height: 30px;
+}
+
+.LeftMenu__icon {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5181b8;
+}
+
+
+
+
+.page_user_img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    margin-right: 15px;
+}
+
+.page_title {
+    flex: 1 1 auto;
+    font-size: 21px;
+}
+
+.page_info__top {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#textarea__user {
+    padding-right: 42px;
+    min-height: 80px;
+    max-height: none;
+    padding: 16px 20px 16px 12px;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 19px;
+    width: 100%;
+    border: none;
+    outline:none;
+    resize: none;
+}
+
+.post_align {
+    padding: 13px 20px 12px;
+    border-top: 1px solid  rgb(220, 225, 230);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post_send_btn {
+    padding: 0 16px;
+    background-color: rgb(81, 129, 184);
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    border: none;
+    height: 30px;
+    width: 120px !important;
+}
+
+.post_img_selector {
+    width: 100px;
+}
+.post_img_selector::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.post_img_selector::before {
+    content: "\f03e";
+    color: rgb(129, 140, 153);
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    /*border: 1px solid #999;*/
+    border-radius: 3px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 20pt;
+    font-family: "Font Awesome 5 Free";
+}
+.post_img_selector:hover::before {
+    border-color: black;
+}
+.post_img_selector:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.image {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.post_delete_btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: none;
+    background: none;
+}
+
+
+

@@ -1,0 +1,48 @@
+.side_bar {
+    width: 151px;
+    float: left;
+
+    &_inner {
+
+    }
+
+    &_ol {
+        padding-left: 0;
+        list-style: none;
+        display: block;
+    }
+
+    &_li {
+        a {
+            padding: 0 6px;
+            align-items: center;
+            display: flex;
+            font-size: 13px;
+            font-weight: 400;
+            height: 30px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            background-color:rgba(174, 183, 194, 0.12);
+        }
+
+        &_text {
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            height: 30px;
+            line-height: 30px;
+        }
+    }
+}
+
+.LeftMenu__icon {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(81, 129, 184);
+}

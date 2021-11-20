@@ -1,0 +1,26 @@
+.my {
+    &-container {
+        max-width: 960px;
+        margin: 0 auto;
+        height: 100%;
+    }
+
+    &-wrapper {
+        margin-top: 60px;
+    }
+}
+
+body {
+    background-color:rgb(237, 238, 240) !important;
+}
+
+.content {
+    position: relative;
+    display: inline-block;
+    width: calc(100% - 170px);
+    padding: 20px;
+    margin-left: 10px;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(220, 225, 230) 0px 1px 0px 0px, rgb(231, 232, 236) 0px 0px 0px 1px;
+}

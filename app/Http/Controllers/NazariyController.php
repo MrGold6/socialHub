@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Repository\Users;
 use App\Repository\Posts;
 use App\Repository\Friends;
+use App\Repository\Message;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use App\Models\Friend;
@@ -15,6 +16,11 @@ class NazariyController extends Controller
 {
     public function userId($id) {
         return view('nazariy.page', ['User' => Users::getUserById($id), 'Posts' => Posts::getUserPosts($id), 'Friend' => Friends::getFriend($id)]);
+    }
+
+    public function getMessages()
+    {
+        return view('nazariy.message', ['Message' => Message::getMessages()]);
     }
 
     public function createPost(Request $request) {

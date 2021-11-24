@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
     //nazar
     Route::get('/user/{id}', [NazariyController::class, 'userId'])->name('user');
+    Route::get('/messages', [NazariyController::class, 'getMessages'])->name('getMessages');
     Route::post( '/userc',[NazariyController::class, 'createPost'])->name('createPost');
     Route::post( '/user_post_delete',[NazariyController::class, 'deletePost'])->name('deletePost');
     Route::post( '/userd',[NazariyController::class, 'removeFriend'])->name('removeFriend');

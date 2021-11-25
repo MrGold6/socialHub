@@ -1,0 +1,66 @@
+.inputname{
+    background-color: white;
+    color: #526bb9;
+    border: solid 1px #526bb9;
+    width:170px;
+    height: 30px;
+    margin-top: 2px;
+    border-radius: 5px;
+}
+
+.inputname:focus{
+    /*border: none !important;*/
+    outline: 0 !important;
+}
+
+.btnDang{
+    background-color: rgb(208, 6, 31);
+    border-radius: 10px;
+    border: solid 1px rgb(152, 4, 24);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    color: white;
+    margin-left: 15px;
+    height: 30px;
+    width: 265px;
+    margin-top: -10px;
+    font-size: 18px;
+}
+
+.cont{
+    transform: translate(-50%, -50%);
+    position: center;
+    margin-left: 148px;
+    margin-top: 30px;
+    background-color: #526bb9;
+    color: white;
+    width: 265px;
+    border-radius: 10px;
+}
+
+.cont input{
+    border-radius: 20px;
+    border:solid 2px #526bb9;
+    color: white;
+    width: 265px;
+}
+
+::-webkit-file-upload-button{
+    color: #526bb9;
+    border-radius: 10px;
+
+}
+
+.inputname[type="text"]:active{
+    border: solid 1px #526bb9;
+}
+
+.form-text{
+    padding-bottom: 4px;
+}
+
+.datainfo{
+    margin-top: 14.3px;
+}

@@ -6,8 +6,7 @@
     background-color: #edeef0;
     display: inline-flex;
     width: 100%;
-    padding-left: 1%;
-    margin-left: 0%;
+    background-color: white;
 }
 
 .tab {
@@ -17,7 +16,7 @@
     background-color: #ffffff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    min-width: 309px;
+    min-width: 350px;
 }
 
 .tab button {
@@ -39,9 +38,6 @@
     color: white;
 }
 
-.imguser{
-    border:solid 2px #5281b9;
-}
 
 .tab button.active {
     background-color: #5281b9;
@@ -65,11 +61,12 @@
 
 .dropdown-content {
     display: none;
+    padding-left: 15px;
     padding-top: 7px;
     padding-bottom: 7px;
     position: absolute;
     background-color: #ffffff;
-    min-width: 170px;
+    min-width: 155px;
     border-radius: 15px;
     z-index: 1;
     color:#5281b9;
@@ -99,16 +96,16 @@
 }
 
 .ikonsblock{
-    padding-right: 10px;
+    padding-right: 13px;
 }
 
 .ikonsdel{
-    padding-right: 10px;
-    padding-left: 2px;
+    padding-right: 13px;
 }
 
 .btnok{
     color: #5281b9;
+    background-color: white;
     border: solid 1px #5281b9;
 }
 
@@ -129,16 +126,28 @@
     margin-left: -23px;
 }
 
-.btnunder2{
-   margin-left: -241px;
-}
-
-.btnunder3{
-    margin-left: 95px;
-}
-
 .nothing{
     color: #5281b9;
 }
 
+.tabgroup{
+    margin-left: -20px;
+}
 
+.groupcontext{
+    padding-top: 15px;
+}
+
+.btn-create{
+    margin-left: -22px;
+    background-color: #5281b9;
+    border-radius: 5px;
+    color: white;
+}
+
+.btn-create:hover{
+    margin-left: -22px;
+    background-color: #5281b9;
+    border-radius: 5px;
+    color: white;
+}

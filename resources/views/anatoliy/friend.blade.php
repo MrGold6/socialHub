@@ -1,27 +1,26 @@
 @extends('layout.template')
 @section('content')
-   <link rel = "stylesheet" type = "text/css" href="{{asset('anatoliy/styleFriend.css')}}" />
+   <link rel = "stylesheet" type = "text/css" href="{{asset('anatoliy/styleFriend.css?1')}}" />
    <div>
 
             <div class="container">
 
                 <div class="tab">
-                    <button class="tablinks btnunder3" onclick="openCity(event, 'Tokyo')">Пошук</button>
-                    <button class="tablinks btnunder2" onclick="openCity(event, 'Paris')">Запити в друзі</button>
-                    <button class="tablinks btnunder1" onclick="openCity(event, 'London')" id="defaultOpen">Мої друзі</button>
+                    <button class="tablinks btnunder3" onclick="openCity(event, 'Tokyo')">Запити в друзі</button>
+                    <button class="tablinks btnunder2" onclick="openCity(event, 'Paris')" id="defaultOpen">Мої друзі</button>
                 </div>
 
-                <div id="London" class="tabcontent">
+                <div id="Paris" class="tabcontent">
                     <div class="py-2">
 
                         @foreach($friends as $friend)
 
-                                <div class="rowmain py-1 my-2">
-                                    <a href="{{ route('user', [$friend->id]) }}">
+                                <div class="row rowmain py-1 my-2">
                                     <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-xs-12 text-center">
-                                        <img class="imguser" style="width: 100px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($friend->image) }}"/>
+                                        <a href="{{ route('user', [$friend->id]) }}">
+                                            <img class="imguser" style="width: 100px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($friend->image) }}"/>
+                                        </a>
                                     </div>
-                                    </a>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 pt-3 text-center">
                                         <h4 class="mt-0">{{$friend->firstName}} {{$friend->middleName}}</h4>
                                         {{$friend->email}}
@@ -47,8 +46,6 @@
 
                                 </div>
 
-
-
                             @endforeach
 
                     </div>
@@ -56,19 +53,17 @@
                 </div>
 
 
+                <div id="Tokyo" class="tabcontent">
+                    <div class="py-1 my-2">
+                        @foreach($requestsFriends as $requestFriend)
+                        <div class="row rowmain py-1 my-1">
+                            <div class="col-xl-2 col-lg-2 col-md-5 col-sm-12 col-xs-12 text-center">
+                                <a href="{{ route('user', [$requestFriend->id]) }}">
 
-
-                @foreach($requestsFriends as $requestFriend)
-
-                <div id="Paris" class="tabcontent">
-                    <div class="py-2">
-                        <div class="rowmain py-1 my-1">
-                            <a href="{{ route('user', [$requestFriend->id]) }}">
-                                <div class="col-xl-2 col-lg-2 col-md-5 col-sm-12 col-xs-12 text-center">
                                     <img class="imguser" style="width: 100px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($requestFriend->image) }}"/>
-                                </div>
-                            </a>
 
+                                </a>
+                            </div>
                             <div class="col-xl-3 col-lg-3 col-md-7 col-sm-12 col-xs-12 pt-3 text-center">
                                 <h4 class="mt-0">{{$requestFriend->firstName}} {{$requestFriend->middleName}}</h4>
                                 {{$requestFriend->email}}
@@ -84,45 +79,9 @@
                             </div>
                         </div>
 
-
+                        @endforeach
                     </div>
                 </div>
-
-                @endforeach
-
-
-                @foreach($notFriends as $notFriend)
-                <div id="Tokyo" class="tabcontent">
-
-                    <div class="py-2">
-
-                        <form class="d-flex mb-2">
-                            <input class="form-control inpserach me-2" type="search" placeholder="Ім'я користувача" aria-label="Search">
-                            <button class="btn btnok" type="submit">Пошук</button>
-                        </form>
-
-                        <div class="rowmain py-1 my-1">
-                            <div class="col-xl-1 col-lg-1 col-md-6 col-sm-6 col-xs-6 text-center">
-                                <img class="imguser" style="width: 100px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($notFriend->image) }}"/>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-6 pt-2 text-center">
-                                <h4 class="mt-2">{{$notFriend->firstName}} {{$notFriend->middleName}}</h4>
-                                {{$notFriend->email}}
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-4 text-center">
-                                <b>День народження</b><br>
-                                <i class="mt-0"><i class="fas fa-gift ikons"></i>{{$notFriend->birthday}} </i>
-
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 pt-2 text-center">
-                                <button type="button" class="btn text-center btnok mt-4"><i class="fas fa-user-plus"></i>Додати до друзів</button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-                @endforeach
 
            <script>
                function openCity(evt, cityName) {

@@ -1,0 +1,70 @@
+.rowmain{
+    position: center;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 2px rgba(82, 129, 185, 0.9);
+    border: none;
+    background-color: #edeef0;
+    display: inline-flex;
+    width: 100%;
+    background-color: white;
+}
+
+.tab button.active {
+    background-color: #5281b9;
+    color: white;
+}
+
+.txt{
+    text-decoration: none;
+    color:#5281b9;
+}
+
+.fa-gift{
+    color: #5281b9;
+}
+
+.show {display: block;}
+
+.ikons{
+    padding-right: 8px;
+}
+
+.ikonsblock{
+    padding-right: 10px;
+}
+
+.ikonsdel{
+    padding-right: 10px;
+    padding-left: 2px;
+}
+
+.btnok{
+    color: #5281b9;
+    border: solid 1px #5281b9;
+    background-color: white;
+}
+
+.btnok:hover{
+    color: #5281b9;
+    border: solid 1px #5281b9;
+}
+
+.btnno{
+    border: solid 1px #5281b9;
+}
+
+.fa-check-circle{
+    color: #5281b9;
+}
+
+.inpserach{
+    margin-left: -23px;
+}
+
+
+.nothing{
+    color: #5281b9;
+}
+
+
+

@@ -53,10 +53,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/deleteGroup/{id}', [ValeriiaController::class, 'deleteGroup'])->name('DeleteGroup');
 
 
+
+
+
+
+
+
     //tolik
     Route::get('/user/{id}/friends', [AnatoliyController::class, 'friend'])->name('friends');
+    Route::get('/allgroups/{id}/allGroups', [AnatoliyController::class, 'allGroup'])->name('allGroups');
+    Route::get('/usersettings/{id}/userSettings', [AnatoliyController::class, 'userSetting'])->name('userSettings');
+    Route::get('/searchpeoples/{id}/searchPeoples', [AnatoliyController::class, 'notfriend'])->name('searchPeoples');
     Route::get('/DeleteRequest/{id}', [AnatoliyController::class, 'dellRequest'])->name('DeleteRequest');
     Route::get('/ConfirmRequest/{id}', [AnatoliyController::class, 'confirmRequest'])->name('ConfirmRequest');
+
 
 
 

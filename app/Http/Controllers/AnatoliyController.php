@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Friend;
+use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +12,8 @@ use Illuminate\Support\Facades\Redirect;
 
 class AnatoliyController extends Controller
 {
+
+    //start friend func
     public function friend($id)
     {
 
@@ -21,8 +25,18 @@ class AnatoliyController extends Controller
 
         $requestfriend = DB::table('users')->select('*')->whereIn('id', $AllFriendIdArrayRequest)->get();
 
-        return view('anatoliy.friend', ['friends'=>$friend], ['requestsFriends'=>$requestfriend, 'notFriends'=>$this->otherUser()]);
+        return view('anatoliy.friend', ['friends'=>$friend], ['requestsFriends'=>$requestfriend]);
 
+    }
+
+    public function notfriend($id){
+        $AllFriendIdArray = $this->searchfriend($id, 1,1);
+
+        $friend = DB::table('users')->select('*')->whereIn('id', $AllFriendIdArray)->get();
+
+        $AllFriendIdArrayRequest = $this->searchfriend($id, 0,0);
+
+        return view('anatoliy.searchPeoples', ['notFriends'=>$this->otherUser()]);
     }
 
     public function searchfriend($id, $comfirm1, $comfirm2)
@@ -93,18 +107,52 @@ class AnatoliyController extends Controller
 
         return $userNotMyFriend;
     }
+    //end friend func
 
+
+
+    //start groups func
+
+    public function allGroup()
+    {
+
+        $group = DB::table('groups')->select('*')->get();
+
+        return view('anatoliy.allGroups', ['groups'=>$group]);
+
+    }
+/*
+    public function group($id)
+    {
+
+        return view('anatoliy.allGroups', ['Group' => GroupService::getByID($id)], ['Posts' => PostService::getByGroup($id), 'UsersCount' => GroupUsersService::getAllGroupUsers($id)->count()]);
+    }
+                        <a href="{{route('GroupUsers', $Group->id)}}">
+                            <p>Count - {{$UsersCount}}</p>
+                        </a>
+*/
+
+
+
+
+    //end groups func
+
+
+    //start setting func
+
+    public function userSetting()
+    {
+
+        $setting = DB::table('users')->select('*')->where('id', '=',  Auth::id())->get();
+
+        return view('anatoliy.userSetting', ['settings'=>$setting]);
+
+    }
+
+    //end setting func
 }
 
 
 
 
-/*
 
-     @if($friend){
-   }@else{
-       <div class="text-center nothing">
-          <h5>Запитів на дружбу немає</h5>
-       </div>
-   }
-*/

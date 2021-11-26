@@ -23,6 +23,8 @@
                                 <span class="page__user__info__value">{{$User->email}}</span>
                             </div>
 
+
+
                         </div>
                     </div>
 
@@ -33,9 +35,7 @@
 
 
                     @if($User->id == \Illuminate\Support\Facades\Auth::id() )
-
-
-
+                        <a href="{{route('userSettings')}}">Налаштування акаунта</a>
                     @else
 
                         {{--     If they are friends     --}}

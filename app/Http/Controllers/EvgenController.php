@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chat;
 use App\Models\Comment;
 use App\Models\CommentAnswer;
 use App\Models\Like;
 use App\Models\Post;
+use http\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -117,5 +119,57 @@ class EvgenController extends Controller
     }
     private function getCountLikeOnPost($id) {
         return DB::table('likes')->where('idPost', '=', $id)->count();
+    }
+    public function chat($id) {
+        $idChat = $this->checkChat($id, Auth::id());
+
+        $messages = DB::table('messages')->join('users', 'users.id', '=', 'messages.idUser')
+            ->select('messages.id as messageId', 'messages.message as message', 'messages.idUser as ownerMessage', 'users.id', 'users.firstName as firstName', 'users.middleName as middleName', 'users.image as ownerImage')
+            ->orderBy('messages.id')
+            ->where('idChat', '=', $idChat)->get();
+
+        $user = DB::table('users')->find($id);
+        return view('evgen.chat', ['messages' => $messages, 'user' => $user, 'chat' => $idChat]);
+    }
+    public function sendMessage(Request $request) {
+        $message = new \App\Models\Message();
+        $message->message = $request['message'];
+        $message->idUser = Auth::id();
+        $message->idChat = $request['chat'];
+        $message->viewed = 0;
+        $message->save();
+        $user = DB::table('users')->find(Auth::id());
+        $message->ownerMessage = Auth::id();
+        $message->ownerImage = $user->image;
+
+        return [view('evgen.message', ['message' => $message, 'user' => null])->render(), $message->id];
+    }
+    public function refreshChat(Request $request) {
+        $messages = DB::table('messages')->join('users', 'users.id', '=', 'messages.idUser')
+            ->select('messages.id as messageId', 'messages.message as message', 'messages.idUser as ownerMessage', 'users.id', 'users.firstName as firstName', 'users.middleName as middleName', 'users.image as ownerImage')
+            ->orderBy('messages.id')
+            ->where('idChat', '=', $request['chat'])->where('messages.id', '>', $request['lastMessageId'])->get();
+
+        $user = DB::table('users')->find($request['userId']);
+        if(count($messages) > 0)
+            return [view('evgen.chatMessages', ['messages' => $messages, 'user' => $user])->render(), $messages[count($messages) - 1]->messageId];
+        return null;
+    }
+    private function checkChat($userId, $myId) {
+        $id = DB::table('chats')->whereIn('idUserFirst', [$userId, $myId])->whereIn('idUserSecond', [$userId, $myId])->select('id')->first();
+        if(!isset($id)) {
+            if($myId != $userId)
+                return $this->generateChat($myId, $userId);
+            else
+                abort(404);
+        }
+        return $id->id;
+    }
+    private function generateChat($idFirstUser, $idSecondUser) {
+        $chat = new Chat();
+        $chat->idUserFirst = $idFirstUser;
+        $chat->idUserSecond = $idSecondUser;
+        $chat->save();
+        return $chat->id;
     }
 }

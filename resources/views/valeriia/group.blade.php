@@ -11,6 +11,19 @@
             <a href="{{route('GroupUsers', $Group->id)}}">
                 <p>Count -{{$UsersCount}}</p>
             </a>
+            @if(Auth::user()->id!=$Group->idUserOwner)
+                @if(!$isGroupUser)
+                    <a href="{{route('CreateGroupUser', [$Group->id, Auth::user()->id])}}">
+                        <p>Вступити в групу</p>
+                    </a>
+                @endif
+                @if($isGroupUser)
+                    <a href="{{route('DeleteUserGroup', [$Group->id, Auth::user()->id])}}">
+                        <p>Вийти з групи</p>
+                    </a>
+                @endif
+            @endif
+
             @if(Auth::user()->id==$Group->idUserOwner)
             <a href="{{route('UpdateGroupView', $Group->id)}}">
                 <p>Update</p>
@@ -19,6 +32,11 @@
             <a href="{{route('DeleteGroup', $Group->id)}}">
                 <p>Delete</p>
             </a>
+
+            <a href="{{route('DeletePhoto', $Group->id)}}">
+                <p>deletePhoto</p>
+            </a>
+
             @endif
 
             @if(Auth::user()->id==$Group->idUserOwner)<a href="{{ route('CreatePostView', $Group->id)}}">create</a>@endif

@@ -27,19 +27,34 @@ class GroupService
 
     }
 
+    public static function create(Request $request)
+    {
+        $group = new Group();
+        $group->title = $request['title'];
+        $group->description = $request['description'];
+
+        $imageU = $request->file('upload_file');
+        $name = $request->file('upload_file')->getClientOriginalName();
+        $imageU->move(public_path('/ImageGroup'), $name);
+        $group->image = $name;
+
+        $group->idUserOwner  = $request['idUserOwner'];
+        $group->save();
+    }
+
     public static function update($id, Request $request)
     {
-        $post = (new Group)::all()->find($id);
-        $post->title = $request['title'];
-        $post->description = $request['description'];
+        $group = (new Group)::all()->find($id);
+        $group->title = $request['title'];
+        $group->description = $request['description'];
         if($request['upload_file']) {
             $imageU = $request->file('upload_file');
             $name = $request->file('upload_file')->getClientOriginalName();
             $imageU->move(public_path('/ImageGroup'), $name);
-            $post->image = $name;
+            $group->image = $name;
         }
-        $post->idUserOwner  = $request['idUserOwner'];
-        $post->save();
+        $group->idUserOwner  = $request['idUserOwner'];
+        $group->save();
     }
 
     public static function delete($id)
@@ -47,5 +62,13 @@ class GroupService
         DB::table('posts')->where('posts.idGroup', '=',  $id)->delete();
         Group::all()->find($id)->delete();
     }
+
+    public static function deletePhoto($id)
+    {
+        $group = (new Group)::all()->find($id);
+        $group->image = "";
+        $group->save();
+    }
+
 
 }

@@ -23,6 +23,8 @@ class ValeriiaController extends Controller
     {
         return view('valeriia.forms.createPost', ['Group' => GroupService::getByID($id)]);
     }
+    //
+
 
     public function createPost(Request $request)
     {
@@ -51,13 +53,40 @@ class ValeriiaController extends Controller
     public function group($id)
     {
 
-        return view('valeriia.group', ['Group' => GroupService::getByID($id)], ['Posts' => PostService::getByGroup($id), 'UsersCount' => GroupUsersService::getAllGroupUsers($id)->count()]);
+        return view('valeriia.group', ['Group' => GroupService::getByID($id)],
+            [
+                'Posts' => PostService::getByGroup($id),
+                'UsersCount' => GroupUsersService::getAllGroupUsers($id)->count(),
+                'isGroupUser' => GroupUsersService::isGroupUser(Auth::id(),$id)
+            ]);
     }
 
     public function groupUsers($id)
     {
         return view('valeriia.group_users', ['Group' => GroupService::getByID($id)], ['Users' => GroupUsersService::getAllGroupUsers($id)]);
 
+    }
+    public function createGroupUser($idUser, $idGroup)
+    {
+        GroupUsersService::create($idUser, $idGroup);
+        return redirect()->route('Group', $idGroup);
+    }
+
+    public function deleteUserGroup($idUser, $idGroup)
+    {
+        GroupUsersService::deleteUserGroup($idUser, $idGroup);
+        return redirect()->route('Group', $idGroup);
+    }
+
+    public function createGroupView()
+    {
+        return view('valeriia.forms.create_group');
+    }
+
+    public function createGroup(Request $request)
+    {
+        GroupService::create($request);
+        return redirect()->route('myGroups');
     }
 
     public function updateGroupView($id)
@@ -78,11 +107,20 @@ class ValeriiaController extends Controller
         return redirect()->route('myGroups');
 
     }
+    //
+    public function deletePhoto($id)
+    {
+        GroupService::deletePhoto($id);
+        return redirect()->route('Group', $id);
+
+    }
 
     public function deleteGroupUsers($id)
     {
         GroupUsersService::delete($id);
         return Redirect::back();
     }
+
+
 
 }

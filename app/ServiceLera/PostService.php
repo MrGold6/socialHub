@@ -12,10 +12,12 @@ class PostService
     public static function getAllFriendPostsByUser($id)
     {
         return  DB::select(DB::raw("
-            SELECT posts.id as id, posts.idGroup as idGroup, COUNT(likes.id) as likess, posts.idOwner as idOwner, posts.text as text, users.lastName as lastName, users.firstName as firstName, users.middleName as middleName
+            SELECT posts.id as id, posts.idGroup as idGroup, COUNT(likes.id) as likess, posts.idOwner as idOwner, posts.text as text, users.lastName as lastName, users.firstName as firstName, users.middleName as middleName, `groups`.title as titleGroup
             FROM friends
             JOIN users ON users.id = friends.idSecondUser
             JOIN posts ON friends.idSecondUser = posts.idOwner
+            LEFT JOIN `groups` ON `groups`.id= posts.idGroup
+
             LEFT JOIN likes ON posts.id = likes.idPost
             WHERE friends.idFirstUser = $id
             GROUP BY posts.id ORDER BY likess DESC"));

@@ -9,6 +9,8 @@
             @endforeach
 
             <a href="{{route('myGroups')}}">Мої групи</a>
+            <a href="{{route('CreateGroupView')}}">Створити</a>
+
         </div>
     </div>
 @endsection

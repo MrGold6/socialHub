@@ -1,11 +1,13 @@
-@if(isset($post->idGroup) && $post->idGroup == 0)
+@if(!isset($post->idGroup) || $post->idGroup == 0)
     <a href="{{ route('user', (isset($post->userId) ? $post->userId : $post->idOwner)) }}">
         <p><b>{{$post->lastName}}  {{$post->firstName}}  {{$post->middleName}}</b></p>
     </a>
 @endif
 
 @if(isset($post->idGroup) && $post->idGroup != 0)
-    <p><b>{{$post->titleGroup}}</b></p>
+    <a href="{{route('Group', $post->idGroup)}}">
+        <p><b>{{$post->titleGroup}}</b></p>
+    </a>
 @endif
 
     <center>

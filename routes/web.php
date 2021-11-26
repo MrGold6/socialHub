@@ -35,24 +35,25 @@ Route::middleware('auth')->group(function () {
 
 
     //lera
-
         //group post
     Route::get('/', [ValeriiaController::class, 'home'])->middleware('auth');
     Route::get('/createPostView/{id}', [ValeriiaController::class, 'createPostView'])->name('CreatePostView');
     Route::post('/createPost', [ValeriiaController::class, 'createPost'])->name('CreatePost');
-    Route::get('/updatePostView/{id}', [ValeriiaController::class, 'updateGroupView'])->name('UpdateGroupView');
-    Route::post('/updatePost', [ValeriiaController::class, 'updateGroup'])->name('UpdateGroup');
+    Route::get('/updateGroupView/{id}', [ValeriiaController::class, 'updateGroupView'])->name('UpdateGroupView');
+    Route::post('/updateGroup', [ValeriiaController::class, 'updateGroup'])->name('UpdateGroup');
     Route::get('/deletePost/{id}', [ValeriiaController::class, 'deletePost'])->name('DeletePost');
-
-        //groups
+     //groups
     Route::get('/groups', [ValeriiaController::class, 'groups'])->name('Groups');
     Route::get('/myGroups', [ValeriiaController::class, 'myGroups'])->name('myGroups');
     Route::get('/Group/{id}', [ValeriiaController::class, 'group'])->name('Group');
     Route::get('/GroupUsers/{id}', [ValeriiaController::class, 'groupUsers'])->name('GroupUsers');
     Route::get('/deleteGroupUsers/{id}', [ValeriiaController::class, 'deleteGroupUsers'])->name('DeleteGroupUsers');
     Route::get('/deleteGroup/{id}', [ValeriiaController::class, 'deleteGroup'])->name('DeleteGroup');
-
-
+    Route::get('/CreateGroupUser/{idUser}/{idGroup}', [ValeriiaController::class, 'createGroupUser'])->name('CreateGroupUser');
+    Route::get('/DeleteUserGroup/{idUser}/{idGroup}', [ValeriiaController::class, 'deleteUserGroup'])->name('DeleteUserGroup');
+    Route::get('/createGroupView', [ValeriiaController::class, 'createGroupView'])->name('CreateGroupView');
+    Route::post('/createGroup', [ValeriiaController::class, 'createGroup'])->name('CreateGroup');
+    Route::get('/deletePhoto/{id}', [ValeriiaController::class, 'deletePhoto'])->name('DeletePhoto');
 
 
 
@@ -62,10 +63,18 @@ Route::middleware('auth')->group(function () {
     //tolik
     Route::get('/user/{id}/friends', [AnatoliyController::class, 'friend'])->name('friends');
     Route::get('/allgroups/{id}/allGroups', [AnatoliyController::class, 'allGroup'])->name('allGroups');
-    Route::get('/usersettings/{id}/userSettings', [AnatoliyController::class, 'userSetting'])->name('userSettings');
-    Route::get('/searchpeoples/{id}/searchPeoples', [AnatoliyController::class, 'notfriend'])->name('searchPeoples');
+    Route::get('/searchPeoples', [AnatoliyController::class, 'notfriend'])->name('searchPeoples');
     Route::get('/DeleteRequest/{id}', [AnatoliyController::class, 'dellRequest'])->name('DeleteRequest');
     Route::get('/ConfirmRequest/{id}', [AnatoliyController::class, 'confirmRequest'])->name('ConfirmRequest');
+
+    Route::get('/userSettings', [AnatoliyController::class, 'userSetting'])->name('userSettings');
+    Route::post('/updateUser', [AnatoliyController::class, 'updateUser'])->name('UpdateUser');
+
+
+    Route::post('/searchUsersByName', [AnatoliyController::class, 'searchUsers'])->name('searchUsersByName');
+
+//deletePhoto
+    Route::get('/deletePhoto', [AnatoliyController::class, 'deletePhoto'])->name('deletePhoto');
 
 
 

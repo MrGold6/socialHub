@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Friend;
 use App\Models\Group;
 use App\Models\User;
+use App\Repository\Friends;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,15 @@ use Illuminate\Support\Facades\Redirect;
 
 class AnatoliyController extends Controller
 {
+    //searchUsers
+    public function searchUsers(Request $request){
+        $AllFriendIdArrayRequest = Friend::all()->where('confirm', '=', 0);
+
+        return view('anatoliy.searchPeoples',
+            ['notFriends'=>$this->otherUser()->where('firstName','=', $request['firstName'])->get()],
+                ['requests'=>$AllFriendIdArrayRequest]);
+    }
+    //searchUsers func
 
     //start friend func
     public function friend($id)
@@ -29,14 +39,17 @@ class AnatoliyController extends Controller
 
     }
 
-    public function notfriend($id){
-        $AllFriendIdArray = $this->searchfriend($id, 1,1);
+    public function notfriend(){
+        $AllFriendIdArray = $this->searchfriend( Auth::id(), 1,1);
 
         $friend = DB::table('users')->select('*')->whereIn('id', $AllFriendIdArray)->get();
 
-        $AllFriendIdArrayRequest = $this->searchfriend($id, 0,0);
+        //$AllFriendIdArrayRequest = $this->searchfriend( Auth::id(), 0,0);
 
-        return view('anatoliy.searchPeoples', ['notFriends'=>$this->otherUser()]);
+        $AllFriendIdArrayRequest = Friend::all()->where('confirm', '=', 0);
+
+        return view('anatoliy.searchPeoples', ['notFriends'=>$this->otherUser()->get()],
+            ['requests'=>$AllFriendIdArrayRequest]);
     }
 
     public function searchfriend($id, $comfirm1, $comfirm2)
@@ -103,7 +116,7 @@ class AnatoliyController extends Controller
         foreach ($AllFriendId as $friend)
             $AllFriendIdArray[] = $friend->id;
 
-        $userNotMyFriend = DB::table('users')->whereNotIn('id', $AllFriendIdArray)->where('id', '<>', Auth::id())->limit(15)->get();
+        $userNotMyFriend = DB::table('users')->whereNotIn('id', $AllFriendIdArray)->where('id', '<>', Auth::id())->limit(15);
 
         return $userNotMyFriend;
     }
@@ -121,17 +134,6 @@ class AnatoliyController extends Controller
         return view('anatoliy.allGroups', ['groups'=>$group]);
 
     }
-/*
-    public function group($id)
-    {
-
-        return view('anatoliy.allGroups', ['Group' => GroupService::getByID($id)], ['Posts' => PostService::getByGroup($id), 'UsersCount' => GroupUsersService::getAllGroupUsers($id)->count()]);
-    }
-                        <a href="{{route('GroupUsers', $Group->id)}}">
-                            <p>Count - {{$UsersCount}}</p>
-                        </a>
-*/
-
 
 
 
@@ -140,14 +142,58 @@ class AnatoliyController extends Controller
 
     //start setting func
 
+
     public function userSetting()
     {
+        $user = User::all()->where('id', '=',  Auth::id())->first();
 
-        $setting = DB::table('users')->select('*')->where('id', '=',  Auth::id())->get();
-
-        return view('anatoliy.userSetting', ['settings'=>$setting]);
-
+        return view('anatoliy.userSetting', ['user'=>$user]);
     }
+    public function updateUser(Request $request)
+    {
+        $user = (new User)::all()->find(Auth::id());
+        $user->firstName = $request['firstName'];
+        $user->middleName = $request['middleName'];
+        $user->lastName = $request['lastName'];
+        $user->birthday = $request['birthday'];
+        $user->email  = $request['email'];
+
+        $file = $request->file('image');
+        $contents = $file->openFile()->fread($file->getSize());
+        $user->image = $contents;
+
+        $user->save();
+
+        return redirect()->route('user', Auth::id());
+    }
+    //deletePhoto
+    public function deletePhoto()
+    {
+        $user = (new User)::all()->find(Auth::id());
+
+        $user->image = null;
+
+        $user->save();
+
+        return redirect()->route('user', Auth::id());
+    }
+    public static function saveImageToFolder($imageFromForm, $path, $idPost = null, $name = null) {
+        if(!$name)
+            $name = self::getImageName($imageFromForm);
+
+
+        $imageFromForm->move(public_path($path), $idPost.'.jpg');
+    }
+    private static function setRecordInDB($idPost, $name) {
+        $image = new Image();
+        $image->idPost = $idPost;
+        $image->imageName = $idPost.'.jpg';
+        $image->save();
+    }
+    private static function getImageName($image) {
+        return $image->getClientOriginalName();
+    }
+
 
     //end setting func
 }

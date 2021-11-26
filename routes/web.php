@@ -11,17 +11,12 @@ Route::middleware('auth')->group(function () {
     //evgen
     Route::get('post/{id}', [EvgenController::class, 'getPost'])->name('currentPost');
     Route::get('commentAnswer', [EvgenController::class, 'getCommentAnswer'])->name('commentAnswer');
-    Route::get('user/{id}/chat', [EvgenController::class, 'chat'])->name('chat');
     Route::post('deleteComment', [EvgenController::class, 'deleteComment'])->name('deleteComment');
     Route::post('deleteAnswerComment', [EvgenController::class, 'deleteAnswerComment'])->name('deleteAnswerComment');
     Route::post('createComment', [EvgenController::class, 'createComment'])->name('createComment');
     Route::post('post/like', [EvgenController::class, 'likePost'])->name('likePost');
     Route::post('createAnswerComment', [EvgenController::class, 'createAnswerCommentMain'])->name('createAnswerCommentMain');
     Route::post('createAnswerToAnswer', [EvgenController::class, 'createAnswerToAnswer'])->name('createAnswerToAnswer');
-    Route::post('createAnswerToAnswer', [EvgenController::class, 'createAnswerToAnswer'])->name('createAnswerToAnswer');
-    Route::post('sendMessage', [EvgenController::class, 'sendMessage'])->name('sendMessage');
-    Route::post('refreshChat', [EvgenController::class, 'refreshChat'])->name('refreshChat');
-
 
 
 
@@ -31,22 +26,22 @@ Route::middleware('auth')->group(function () {
     Route::post( '/userc',[NazariyController::class, 'createPost'])->name('createPost');
     Route::post( '/user_post_delete',[NazariyController::class, 'deletePost'])->name('deletePost');
     Route::post( '/userd',[NazariyController::class, 'removeFriend'])->name('removeFriend');
+    Route::post( '/user',[NazariyController::class, 'confirmToBeFriend'])->name('confirmToBeFriend');
+    Route::post( '/usertobe',[NazariyController::class, 'sendToBeFriend'])->name('sendToBeFriend');
+    Route::post( '/userm',[NazariyController::class, 'makeFriends'])->name('makeFriends');
 
 
-        //lera
-        //group post
 
-        //group post
+
+
+    //lera
+    //group post
     Route::get('/', [ValeriiaController::class, 'home'])->middleware('auth');
     Route::get('/createPostView/{id}', [ValeriiaController::class, 'createPostView'])->name('CreatePostView');
     Route::post('/createPost', [ValeriiaController::class, 'createPost'])->name('CreatePost');
     Route::get('/updateGroupView/{id}', [ValeriiaController::class, 'updateGroupView'])->name('UpdateGroupView');
     Route::post('/updateGroup', [ValeriiaController::class, 'updateGroup'])->name('UpdateGroup');
-    Route::get('/updatePostView/{id}', [ValeriiaController::class, 'updateGroupView'])->name('UpdateGroupView');
-    Route::post('/updatePost', [ValeriiaController::class, 'updateGroup'])->name('UpdateGroup');
     Route::get('/deletePost/{id}', [ValeriiaController::class, 'deletePost'])->name('DeletePost');
-     //groups
-
     //groups
     Route::get('/groups', [ValeriiaController::class, 'groups'])->name('Groups');
     Route::get('/myGroups', [ValeriiaController::class, 'myGroups'])->name('myGroups');
@@ -71,7 +66,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/searchPeoples', [AnatoliyController::class, 'notfriend'])->name('searchPeoples');
     Route::get('/DeleteRequest/{id}', [AnatoliyController::class, 'dellRequest'])->name('DeleteRequest');
     Route::get('/ConfirmRequest/{id}', [AnatoliyController::class, 'confirmRequest'])->name('ConfirmRequest');
-
     Route::get('/userSettings', [AnatoliyController::class, 'userSetting'])->name('userSettings');
     Route::post('/updateUser', [AnatoliyController::class, 'updateUser'])->name('UpdateUser');
 
@@ -80,7 +74,5 @@ Route::middleware('auth')->group(function () {
 
 //deletePhoto
     Route::get('/deletePhoto', [AnatoliyController::class, 'deletePhoto'])->name('deletePhoto');
-
-
 
 });

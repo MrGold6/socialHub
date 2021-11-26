@@ -11,13 +11,16 @@ Route::middleware('auth')->group(function () {
     //evgen
     Route::get('post/{id}', [EvgenController::class, 'getPost'])->name('currentPost');
     Route::get('commentAnswer', [EvgenController::class, 'getCommentAnswer'])->name('commentAnswer');
+    Route::get('user/{id}/chat', [EvgenController::class, 'chat'])->name('chat');
     Route::post('deleteComment', [EvgenController::class, 'deleteComment'])->name('deleteComment');
     Route::post('deleteAnswerComment', [EvgenController::class, 'deleteAnswerComment'])->name('deleteAnswerComment');
     Route::post('createComment', [EvgenController::class, 'createComment'])->name('createComment');
     Route::post('post/like', [EvgenController::class, 'likePost'])->name('likePost');
     Route::post('createAnswerComment', [EvgenController::class, 'createAnswerCommentMain'])->name('createAnswerCommentMain');
     Route::post('createAnswerToAnswer', [EvgenController::class, 'createAnswerToAnswer'])->name('createAnswerToAnswer');
-
+    Route::post('createAnswerToAnswer', [EvgenController::class, 'createAnswerToAnswer'])->name('createAnswerToAnswer');
+    Route::post('sendMessage', [EvgenController::class, 'sendMessage'])->name('sendMessage');
+    Route::post('refreshChat', [EvgenController::class, 'refreshChat'])->name('refreshChat');
 
 
     //nazar

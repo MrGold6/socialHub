@@ -29,7 +29,7 @@ class Posts
             $item = DB::table('posts')
                 ->join('images', 'images.idPost', '=', 'posts.id')
                 ->join('users', 'users.id', '=', 'posts.idOwner')
-                ->select('posts.id as id', 'posts.text as text', 'images.imageName as image', 'users.id as userId', 'users.firstName', 'users.lastName', 'users.middleName')
+                ->select('posts.id as id', 'posts.text as text', 'images.imageName as image', 'users.id as userId', 'users.firstName', 'users.lastName', 'users.middleName', 'users.image as image')
                 ->where('posts.id', '=', $post->id)
                 ->get()->first();
 
@@ -39,7 +39,7 @@ class Posts
                 $posts[] = DB::table('posts')
                     ->join('users', 'users.id', '=', 'posts.idOwner')
                     ->select( '*')
-                    ->select('posts.id as id', 'posts.text as text',  'users.id as userId', 'users.firstName', 'users.lastName', 'users.middleName')
+                    ->select('posts.id as id', 'posts.text as text',  'users.id as userId', 'users.firstName', 'users.lastName', 'users.middleName', 'users.image as image')
                     ->where('posts.id', '=', $post->id)
                     ->get()->first();
 

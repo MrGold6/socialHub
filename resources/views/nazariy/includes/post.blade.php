@@ -1,6 +1,13 @@
 @if(!isset($post->idGroup) || $post->idGroup == 0)
     <a href="{{ route('user', (isset($post->userId) ? $post->userId : $post->idOwner)) }}">
-        <p><b>{{$post->lastName}}  {{$post->firstName}}  {{$post->middleName}}</b></p>
+        <div style="display: inline-flex; align-items: center;">
+            @if( !empty($post->image ) )
+                <img class="messages_user_img" src="data:image/jpeg;base64,{{ base64_encode($post->image) }}" alt="{{$post->firstName}}">
+            @else
+                <img class="messages_user_img" src="{{ URL::to('./img/camera.png') }}" alt="{{$post->firstName}}">
+            @endif
+            <p style="margin: 0px 10px;"><b>{{$post->lastName}}  {{$post->firstName}}  {{$post->middleName}}</b></p>
+        </div>
     </a>
 @endif
 

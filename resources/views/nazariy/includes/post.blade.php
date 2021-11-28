@@ -1,6 +1,7 @@
 @if(!isset($post->idGroup) || $post->idGroup == 0)
-    <a href="{{ route('user', (isset($post->userId) ? $post->userId : $post->idOwner)) }}">
-        <p><b>{{$post->lastName}}  {{$post->firstName}}  {{$post->middleName}}</b></p>
+
+    <a style="text-decoration: none;" href="{{ route('user', (isset($post->userId) ? $post->userId : $post->idOwner)) }}">
+        <p><b>{{$post->lastName}}  {{$post->firstName}} </b></p>
     </a>
 @endif
 

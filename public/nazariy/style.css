@@ -401,3 +401,21 @@ body {
     font-size: 13px;
     line-height: 16px;
 }
+
+.setting_button{
+    text-decoration: none;
+    background-color: #5281b9;
+    color: white;
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.setting_button:hover{
+    text-decoration: none;
+    background-color: #245fa4;
+    color: white;
+}

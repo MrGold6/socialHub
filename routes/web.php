@@ -75,7 +75,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/searchUsersByName', [AnatoliyController::class, 'searchUsers'])->name('searchUsersByName');
 
-//deletePhoto
+    //deletePhoto
     Route::get('/deletePhoto', [AnatoliyController::class, 'deletePhoto'])->name('deletePhoto');
 
 });

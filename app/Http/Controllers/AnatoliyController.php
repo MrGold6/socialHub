@@ -149,6 +149,7 @@ class AnatoliyController extends Controller
 
         return view('anatoliy.userSetting', ['user'=>$user]);
     }
+
     public function updateUser(Request $request)
     {
         $user = (new User)::all()->find(Auth::id());

@@ -5,7 +5,7 @@
         <ul class="messages__container">
             @foreach ($Message as $message)
                 <li class="messages__item__container">
-                    <a href="#">
+                    <a href="{{ route('chat', $message->idUser) }}">
                         <div class="messages__item__img__container">
                             <div class="messages__item__img__wrapper">
                                 @if( !empty($message-> image ) )

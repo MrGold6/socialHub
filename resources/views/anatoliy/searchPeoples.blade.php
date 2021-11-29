@@ -11,6 +11,7 @@
                 <a href="{{route('searchPeoples')}}"  class="btn btnok" type="submit">Всі</a>
             </form>
             @foreach($notFriends as $notFriend)
+
                 <div class="row rowmain py-1 my-2 ">
                     <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12 text-center">
                         <a class="text-name" href="{{ route('user', $notFriend->id )}}">
@@ -23,9 +24,9 @@
                     </div>
                         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-2 text-center">
 
-
-                            <h4 class="mt-2 name">{{$notFriend->firstName}} {{$notFriend->middleName}}</h4>
-
+                            <a class="text-name" href="{{ route('user', $notFriend->id )}}">
+                                <h4 class="mt-2 name">{{$notFriend->firstName}} {{$notFriend->middleName}}</h4>
+                            </a>
 
                             <span class="">{{$notFriend->email}}</span>
                         </div>
@@ -36,7 +37,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 pt-2 text-center">
                         @php($hasRequest=0)
                             @foreach ($requests as $request)
-                                @if($request->idSecondUser == $notFriend->id)
+                                @if($request->idFirstUser == \Illuminate\Support\Facades\Auth::id() && $request->idSecondUser == $notFriend->id)
                                     @php($hasRequest=1)
                                     <form action="{{ route('removeFriend') }}" method="post" enctype="multipart/form-data">
                                         @csrf

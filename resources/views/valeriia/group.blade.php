@@ -30,15 +30,19 @@
         </div>
 
             @if(Auth::user()->id!=$Group->idUserOwner)
-                @if(!$isGroupUser)
-                    <a class="countSubExit" href="{{route('CreateGroupUser', [$Group->id, Auth::user()->id])}}">
-                        <span>Вступити в групу</span>
-                    </a>
-                @endif
-                @if($isGroupUser)
+                @if($isGroupUser!=Auth::user())
                     <div class="exitbtn">
                         <div class="align-btn">
-                        <a class="countSubExit" href="{{route('DeleteUserGroup', [$Group->id, Auth::user()->id])}}">
+                            <a class="countSubExit" href="{{route('CreateGroupUser', [Auth::user()->id, $Group->id])}}">
+                                <span>Вступити в групу</span>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+                @if($isGroupUser==Auth::user())
+                    <div class="exitbtn">
+                        <div class="align-btn">
+                        <a class="countSubExit" href="{{route('DeleteUserGroup', [Auth::user()->id, $Group->id])}}">
                             <span>Вийти з групи</span>
                         </a>
                         </div>

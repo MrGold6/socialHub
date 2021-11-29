@@ -57,9 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/createGroupView', [ValeriiaController::class, 'createGroupView'])->name('CreateGroupView');
     Route::post('/createGroup', [ValeriiaController::class, 'createGroup'])->name('CreateGroup');
     Route::get('/deletePhoto/{id}', [ValeriiaController::class, 'deletePhoto'])->name('DeletePhoto');
-
-
-
+    Route::post('/searchGroupsByName', [ValeriiaController::class, 'searchGroupsByName'])->name('searchGroupsByName');
 
 
 

@@ -114,6 +114,21 @@
     border: solid 1px #5281b9;
 }
 
+.btnmy{
+    color: #5281b9;
+    background-color: white;
+    border: solid 1px #5281b9;
+    width: 110px;
+    margin-left: -8px;
+}
+.btnmy:hover{
+    color: #5281b9;
+    background-color: white;
+    border: solid 1px #5281b9;
+    width: 110px;
+    margin-left: -8px;
+}
+
 .btnno{
     border: solid 1px #5281b9;
 }
@@ -150,4 +165,9 @@
     background-color: #5281b9;
     border-radius: 5px;
     color: white;
+}
+
+.namegroups{
+    text-decoration: none;
+    color: #5281b9;
 }

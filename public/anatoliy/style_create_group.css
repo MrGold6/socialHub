@@ -1,0 +1,18 @@
+.btn_create{
+    background-color: #5281b9;
+    color: white;
+}
+.btn_create:hover{
+    background-color: #256abd;
+    color: white;
+}
+.text_style{
+    color: #5281b9;
+}
+.content{
+    border-radius: 20px;
+}
+.card{
+    border-radius: 20px;
+    box-shadow: 0 0 5px 2px rgba(82, 129, 185, 0.7);
+}

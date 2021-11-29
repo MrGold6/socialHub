@@ -2,10 +2,13 @@
     background-color: white;
     color: #526bb9;
     border: solid 1px #526bb9;
-    width:170px;
+    width:215px;
     height: 30px;
     margin-top: 2px;
     border-radius: 5px;
+    margin-top: -10px;
+    padding-left: 5px;
+    padding-bottom: 2px;
 }
 
 .inputname:focus{
@@ -20,31 +23,28 @@
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 1px;
-    padding-bottom: 2px;
     color: white;
-    margin-left: 15px;
-    height: 30px;
-    width: 265px;
+    height: 50px;
+    width: 270px;
     margin-top: -10px;
     font-size: 18px;
 }
 
-.cont{
-    transform: translate(-50%, -50%);
-    position: center;
-    margin-left: 148px;
-    margin-top: 30px;
-    background-color: #526bb9;
-    color: white;
-    width: 265px;
+.btnDang:hover{
+    background-color: rgb(161, 6, 25);
     border-radius: 10px;
-}
-
-.cont input{
-    border-radius: 20px;
-    border:solid 2px #526bb9;
+    border: solid 1px rgb(152, 4, 24);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
     color: white;
-    width: 265px;
+    height: 50px;
+    width: 270px;
+    margin-top: -10px;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+
 }
 
 ::-webkit-file-upload-button{
@@ -58,9 +58,43 @@
 }
 
 .form-text{
-    padding-bottom: 4px;
+    padding-bottom: 12.5px;
+    padding-left: 15px;
+    padding-top: 12.5px;
+    color: white;
+    background-color: #526bb9;
+    border-radius: 13px;
+    margin-bottom: 25px;
+    margin-top: 15px;
+    border: 2px solid #263e80;
 }
 
 .datainfo{
     margin-top: 14.3px;
+}
+.text-cnter{
+    margin-left: 70px;
+}
+p{
+    margin-bottom: -10px;
+}
+
+.btn-siniy{
+    background-color: #526bb9;
+    color: white;
+    margin-top: 10px;
+    width: 215px;
+}
+
+.btn-siniy:hover{
+    background-color: #3a5196;
+    color: white;
+    margin-top: 10px;
+    width: 215px;
+}
+.formsetting{
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
 }

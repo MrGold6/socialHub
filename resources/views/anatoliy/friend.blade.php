@@ -1,6 +1,6 @@
 @extends('layout.template')
 @section('content')
-   <link rel = "stylesheet" type = "text/css" href="{{asset('anatoliy/styleFriend.css?1')}}" />
+   <link rel = "stylesheet" type = "text/css" href="{{asset('anatoliy/styleFriend.css?2')}}" />
    <div>
 
             <div class="container">
@@ -22,12 +22,12 @@
                                         </a>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 pt-3 text-center">
-                                        <h4 class="mt-0">{{$friend->firstName}} {{$friend->middleName}}</h4>
+                                        <h4 class="mt-0 name">{{$friend->firstName}} {{$friend->middleName}}</h4>
                                         {{$friend->email}}
                                     </div>
 
                                     <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-xs-12 pt-4 text-center">
-                                        <b>День народження</b><br>
+                                        <b class="name">День народження</b><br>
                                         <i class="mt-0"><i class="fas fa-gift ikons"></i>{{$friend->birthday}} </i>
 
                                     </div>
@@ -59,17 +59,19 @@
                         <div class="row rowmain py-1 my-1">
                             <div class="col-xl-2 col-lg-2 col-md-5 col-sm-12 col-xs-12 text-center">
                                 <a href="{{ route('user', [$requestFriend->id]) }}">
-
-                                    <img class="imguser" style="width: 100px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($requestFriend->image) }}"/>
-
+                                    @if(!empty($requestFriend->image))
+                                        <img class="imguser" style="width: 100px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($requestFriend->image) }}"/>
+                                    @else
+                                        <img class="imguser" style="width: 100px; border-radius: 100px;" src="{{ URL::to('./img/camera.png') }}" alt="User Photo">
+                                    @endif
                                 </a>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-7 col-sm-12 col-xs-12 pt-3 text-center">
-                                <h4 class="mt-0">{{$requestFriend->firstName}} {{$requestFriend->middleName}}</h4>
+                                <h4 class="mt-0 name">{{$requestFriend->firstName}} {{$requestFriend->middleName}}</h4>
                                 {{$requestFriend->email}}
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 pt-4 text-center">
-                                <b>День народження</b><br>
+                                <b class="name">День народження</b><br>
                                 <i class="mt-0"><i class="fas fa-gift ikons"></i>{{$requestFriend->birthday}} </i>
 
                             </div>

@@ -1,0 +1,106 @@
+.countSub{
+    text-decoration: none;
+    color: #5281b9;
+}
+.rounded{
+    border-radius: 150px;
+}
+
+.content{
+    max-width: 800px;
+}
+.divName{
+    padding-left: 10px;
+    padding-bottom: 130px;
+    position: relative;
+}
+
+.nameGroup{
+    margin-bottom: 25px;
+}
+.divdown{
+    position: absolute;
+    bottom: 0;
+}
+li{
+    list-style-type: none;
+}
+.countSubExit{
+    background-color: #5281b9;
+    color:white;
+    text-decoration: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 7px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.countSubExit:hover{
+    background-color: #1d62b2;
+    color:white;
+    text-decoration: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 7px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.exitbtn{
+    position: relative;
+    margin-bottom: 37.5px;
+}
+.align-btn{
+    position: absolute;
+    right: 0;
+}
+
+.btncrud{
+    text-decoration: none;
+}
+.bnt_create_post {
+    background-color: #5281b9;
+    color: white;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.bnt_create_post:hover {
+    background-color: #2969b6;
+    color: white;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.bnt_delete_post{
+    background-color: #e01a1a;
+    color: white;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.bnt_delete_post:hover{
+    background-color: #b90d0d;
+    color: white;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}

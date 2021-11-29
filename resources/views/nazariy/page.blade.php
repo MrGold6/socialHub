@@ -1,14 +1,14 @@
 @extends('layout.template')
 @section('content')
-    <link rel="stylesheet" href="{{ asset('nazariy/style.css?14') }}">
+    <link rel="stylesheet" href="{{ asset('nazariy/style.css?15') }}">
     <div class="content">
         <div class="page_info">
             <div class="page_info__wrap">
                 <div class="page_info__top">
                     @if(!empty($User->image))
-                    <img class="page_user_img" src="data:image/jpeg;base64,{{ base64_encode($User->image) }}" alt="Nazariy">
+                    <img class="page_user_img" src="data:image/jpeg;base64,{{ base64_encode($User->image) }}" alt="User Photo">
                     @else
-                    <img class="page_user_img" src="{{ URL::to('./img/camera.png') }}" alt="Nazariy">
+                    <img class="page_user_img" src="{{ URL::to('./img/camera.png') }}" alt="User Photo">
                     @endif
                     <div class="page__user__info">
                         <h1 class="page_title">{{$User->firstName}} {{$User->lastName}}</h1>
@@ -35,7 +35,7 @@
 
 
                     @if($User->id == \Illuminate\Support\Facades\Auth::id() )
-                        <a href="{{route('userSettings')}}">Налаштування акаунта</a>
+                        <a class="setting_button" href="{{route('userSettings')}}">Налаштування акаунта</a>
                     @else
 
                         {{--     If they are friends     --}}

@@ -1,0 +1,65 @@
+.rowmain{
+    position: center;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 2px rgba(82, 129, 185, 0.9);
+    border: none;
+    background-color: #ffffff;
+    display: inline-flex;
+    width: 100%;
+    padding-left: 1%;
+    margin-left: 0%;
+}
+
+.imguser{
+    border:solid 2px #5281b9;
+}
+
+
+.txt{
+    text-decoration: none;
+    color:#5281b9;
+}
+
+
+.fa-gift{
+    color: #5281b9;
+}
+
+.dropdown a:hover {background-color: #ffffff;}
+
+.show {display: block;}
+
+.ikons{
+    padding-right: 8px;
+}
+
+.deletebtn{
+    background-color: #e01a1a;
+    color: white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+.deletebtn:hover{
+    background-color: #a80909;
+    color: white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-decoration: none;
+    border-radius: 7px;
+    border: 2px solid #e30606;
+}
+.bnt{
+    margin-top: 15px;
+}
+
+.name{
+    color: #5281b9;
+}
+

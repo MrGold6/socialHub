@@ -6,9 +6,9 @@
             <div class="page_info__wrap">
                 <div class="page_info__top">
                     @if(!empty($User->image))
-                    <img class="page_user_img" src="data:image/jpeg;base64,{{ base64_encode($User->image) }}" alt="User Photo">
+                        <img class="page_user_img" src="data:image/jpeg;base64,{{ base64_encode($User->image) }}" alt="User Photo">
                     @else
-                    <img class="page_user_img" src="{{ URL::to('./img/camera.png') }}" alt="User Photo">
+                        <img class="page_user_img" src="{{ URL::to('./img/camera.png') }}" alt="User Photo">
                     @endif
                     <div class="page__user__info">
                         <h1 class="page_title">{{$User->firstName}} {{$User->lastName}}</h1>
@@ -88,9 +88,7 @@
 
 
                         @if($Friend['all'] == '[]')
-                            <form action="{{ route('makeFriends') }}" method="post" enctype="multipart/form-data">
-                                @csrf
-
+                            <form action="{{ route('makeFriends') }}" method="get" enctype="multipart/form-data">
                                 <input type="hidden" name="firstUser" value="{{ \Illuminate\Support\Facades\Auth::id() }}">
                                 <input type="hidden" name="secondUser" value="{{ $User->id }}">
 
@@ -100,9 +98,9 @@
 
 
 
-    {{--                    @foreach ($Friend as $friend)--}}
-    {{--                        {{ $friend }}--}}
-    {{--                    @endforeach--}}
+                        {{--                    @foreach ($Friend as $friend)--}}
+                        {{--                        {{ $friend }}--}}
+                        {{--                    @endforeach--}}
                         <a href="{{ route('chat', $User->id) }}">
                             <button  class="btn-primary message-btn" style="width: 200px;" >Написати повідомлення</button>
                         </a>
@@ -125,7 +123,7 @@
                 </div>
             </form>
         </div>
-    @include('evgen.likePost')
+        @include('evgen.likePost')
     @endif
 
 
@@ -133,8 +131,8 @@
 
     @foreach ($Posts as $post)
         <div class="content">
-        @include('nazariy.includes.post', ['post' => $post])
-    </div>
+            @include('nazariy.includes.post', ['post' => $post])
+        </div>
     @endforeach
 
 

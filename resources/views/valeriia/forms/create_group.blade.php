@@ -28,7 +28,7 @@
 
                             <div class="row mb-3">
                                 <label class="col-sm-6 col-form-label ln text_style">Фото:</label>
-                                    <input id="image" class="form-control" style="color: #5281b9;" type="file" name="upload_file" >
+                                    <input id="image" class="form-control" style="color: #5281b9;" type="file" name="upload_file" required>
                             </div>
 
                             <center><input type="submit" class="btn btn_create" value="Створити"></center>

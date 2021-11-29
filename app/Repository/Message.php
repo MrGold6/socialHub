@@ -27,12 +27,12 @@ class Message
 
         $firstUser = DB::table('chats')
             ->where('idUserFirst',  '=', Auth::id())
-            ->select('chats.id as idChat', 'idUserSecond as idUser', 'users.image','users.firstName', 'users.lastName', 'users.middleName')
+            ->select('chats.id as idChat', 'idUserSecond as idUser', 'users.id as idUser', 'users.image','users.firstName', 'users.lastName', 'users.middleName')
             ->join('users', 'users.id', '=', 'chats.idUserSecond')
             ->get();
         $secondUser = DB::table('chats')
             ->where('idUserSecond',  '=', Auth::id())
-            ->select('chats.id as idChat', 'idUserFirst as idUser', 'users.image','users.firstName', 'users.lastName', 'users.middleName')
+            ->select('chats.id as idChat', 'idUserFirst as idUser', 'users.id as idUser', 'users.image','users.firstName', 'users.lastName', 'users.middleName')
             ->join('users', 'users.id', '=', 'chats.idUserFirst')
             ->get();
 

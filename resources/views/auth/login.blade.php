@@ -26,23 +26,23 @@
                     @csrf
                     <div class="form-input">
                         <span><i class="fa fa-envelope"></i></span>
-                        <input type="email" name="email" placeholder="Email" tabindex="10" required>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" tabindex="10" required>
+                    </div>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
-                    </div>
+                    @enderror
                     <div class="form-input">
                         <span><i class="fa fa-key"></i></span>
-                        <input type="password" name="password" placeholder="Пароль" required>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Пароль" required>
+
+                    </div>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
-                    </div>
-
+                    @enderror
                     <div class="mb-3">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="cb1" name="">

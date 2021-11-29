@@ -11,7 +11,7 @@
                 @foreach ($Message['user'] as $user)
                     @if($message->idChat == $user->idChat)
                         <li class="messages__item__container">
-                            <a href="#">
+                            <a href="{{ route('chat', $user->idUser) }}">
                                 <div class="messages__item__img__container">
                                     <div class="messages__item__img__wrapper">
                                         @if( !empty($user->image ) )

@@ -17,12 +17,14 @@
 
                                 <div class="row rowmain py-1 my-2">
                                     <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-xs-12 text-center">
-                                        <a href="{{ route('user', [$friend->id]) }}">
+                                        <a href="{{ route('user', [$friend->id]) }}" >
                                             <img class="imguser" style="width: 100px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($friend->image) }}"/>
                                         </a>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 pt-3 text-center">
-                                        <h4 class="mt-0 name">{{$friend->firstName}} {{$friend->middleName}}</h4>
+                                        <a href="{{ route('user', [$friend->id]) }}" style="text-decoration: none;">
+                                            <h4 class="mt-0 name">{{$friend->firstName}} {{$friend->middleName}}</h4>
+                                        </a>
                                         {{$friend->email}}
                                     </div>
 
@@ -37,9 +39,8 @@
                                         <div class="dropdown ">
                                             <span class="btn-treedots">. . .</span>
                                             <div class="dropdown-content">
-                                                <a href="#" class="txt"><i class="far fa-comments ikons py-1 "></i>Написати</a><br>
+                                                <a href="{{ route('chat', $friend->id) }}" class="txt"><i class="far fa-comments ikons py-1 "></i>Написати</a><br>
                                                 <a href="{{route('DeleteRequest',  $friend->id)}}" class=" text-danger py-1 txt"><i class="fas fa-trash-alt text-danger ikonsdel"></i>Видалити</a><br>
-                                                <a href="#" class=" text-danger txt"><i class="fas fa-ban text-danger ikonsblock py-1 "></i>Блокувати</a>
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +68,9 @@
                                 </a>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-7 col-sm-12 col-xs-12 pt-3 text-center">
-                                <h4 class="mt-0 name">{{$requestFriend->firstName}} {{$requestFriend->middleName}}</h4>
+                                <a href="{{ route('user', [$requestFriend->id]) }}" style="text-decoration: none;">
+                                  <h4 class="mt-0 name">{{$requestFriend->firstName}} {{$requestFriend->middleName}}</h4>
+                                </a>
                                 {{$requestFriend->email}}
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 pt-4 text-center">

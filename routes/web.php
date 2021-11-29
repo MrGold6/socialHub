@@ -28,12 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/messages', [NazariyController::class, 'getMessages'])->name('getMessages');
     Route::post( '/userc',[NazariyController::class, 'createPost'])->name('createPost');
     Route::post( '/user_post_delete',[NazariyController::class, 'deletePost'])->name('deletePost');
-    Route::post( '/userd',[NazariyController::class, 'removeFriend'])->name('removeFriend');
+    Route::get( '/userd',[NazariyController::class, 'removeFriend'])->name('removeFriend');
     Route::post( '/user',[NazariyController::class, 'confirmToBeFriend'])->name('confirmToBeFriend');
     Route::post( '/usertobe',[NazariyController::class, 'sendToBeFriend'])->name('sendToBeFriend');
-    Route::post( '/userm',[NazariyController::class, 'makeFriends'])->name('makeFriends');
-
-
+    Route::get( '/userm',[NazariyController::class, 'makeFriends'])->name('makeFriends');
 
 
 
@@ -57,13 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/createGroupView', [ValeriiaController::class, 'createGroupView'])->name('CreateGroupView');
     Route::post('/createGroup', [ValeriiaController::class, 'createGroup'])->name('CreateGroup');
     Route::get('/deletePhoto/{id}', [ValeriiaController::class, 'deletePhoto'])->name('DeletePhoto');
+    Route::post('/searchGroupsByName', [ValeriiaController::class, 'searchGroupsByName'])->name('searchGroupsByName');
 
-
-
-
-
-
-    //tolik
+//tolik
     Route::get('/user/{id}/friends', [AnatoliyController::class, 'friend'])->name('friends');
     Route::get('/allgroups/{id}/allGroups', [AnatoliyController::class, 'allGroup'])->name('allGroups');
     Route::get('/searchPeoples', [AnatoliyController::class, 'notfriend'])->name('searchPeoples');
@@ -73,9 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/updateUser', [AnatoliyController::class, 'updateUser'])->name('UpdateUser');
 
 
-    Route::post('/searchUsersByName', [AnatoliyController::class, 'searchUsers'])->name('searchUsersByName');
+    Route::get('/searchUsersByName', [AnatoliyController::class, 'searchUsers'])->name('searchUsersByName');
 
     //deletePhoto
     Route::get('/deletePhoto', [AnatoliyController::class, 'deletePhoto'])->name('deletePhoto');
-
 });

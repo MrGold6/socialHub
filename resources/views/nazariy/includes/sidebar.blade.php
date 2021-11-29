@@ -51,11 +51,21 @@
                     </a>
                 </li>
                 <li id="" class="side_bar_li">
-                    <a href="" onclick="" class="left_row">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();" class="left_row">
                         <div class="LeftMenu__icon">
+
                             <i class="fas fa-sign-out-alt" style="font-size: 16px; margin-left: 5px; color: rgb(81, 129, 184);"></i>
-                          </div>
-                        <span class="side_bar_li_text">Вихід</span>
+
+                            <span class="side_bar_li_text" style="margin-left: 10px;">Вийти</span>
+
+                        </div>
+
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
                     </a>
                 </li>
             </ol>

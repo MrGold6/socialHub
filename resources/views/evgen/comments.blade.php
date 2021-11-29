@@ -6,15 +6,17 @@
             <div class="row">
                 <div class="col-md-1">
                     <div style="height: 52px; width: 52px;" class="mt-2">
-                        <img style="width: 52px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($comment->image) }}"/>
+{{--                        <img style="width: 52px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($comment->image) }}"/>--}}
+                        @if(!empty($comment->image))
+                            <img style="width: 50px; border-radius: 50%;" src="data:image/jpeg;base64,{{ base64_encode($comment->image) }}"/>
+                        @else
+                            <img style="width: 50px; border-radius: 50%;" src="{{ URL::to('./img/camera.png') }}">
+                        @endif
                     </div>
-                    <p class="ml-1 mt-1">
-                        {{ $comment->firstName }}
-                    </p>
                 </div>
                 <div class="col-md-11">
                     <p>
-                        {{ $comment->comment }}
+                        {{ $comment->firstName }} - {{ $comment->comment }}
                     </p>
                     <div class="row">
                         @if($comment->idUser == \Illuminate\Support\Facades\Auth::id())

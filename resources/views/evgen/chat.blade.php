@@ -5,6 +5,7 @@
             <div class="row">
                 <div class="col-1">
                     <img style="width: 52px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($user->image) }}"/>
+
                 </div>
                 <div class="col-11">
                     <h4>{{ $user->firstName.' '.$user->middleName }}</h4>
@@ -57,7 +58,7 @@
         }
     </style>
     <script>
-        var lastMessageId = {{ $messages[count($messages) - 1]->messageId }};
+        var lastMessageId = {{ isset($messages[count($messages) - 1]) ? ($messages[count($messages) - 1]->messageId) : 0 }};
         scroll({{ count($messages) * 100 }} + 'px')
         $('#sendMessage').click(function () {
             event.preventDefault();

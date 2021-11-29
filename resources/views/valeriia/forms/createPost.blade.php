@@ -15,6 +15,11 @@
                             <input type="hidden" name="idGroup" value="{{$Group->id}}">
 
                             <div class="row mb-3">
+                                <label class="col-sm-6 col-form-label ln text_style">Фото:</label>
+                                <input id="image" class="form-control" style="color: #5281b9;" type="file" name="upload_file" >
+                            </div>
+
+                            <div class="row mb-3">
                                 <label class="col-sm-6 col-form-label ln text_style">Текст:</label>
                                     <input class="form-control" style="color: #5281b9;" type="text" name="text" required>
                             </div>

@@ -7,10 +7,10 @@
 
         <div class="row">
             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                <form class="d-flex mb-2">
-                    <input class="form-control inpserach me-2" type="search" placeholder="Пошук по групам" aria-label="Search">
-                    <a class="btn btnok" type="submit">Пошук</a>
-
+                <form action="{{ route('searchGroupsByName') }}" class="d-flex mb-2 inpserach" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input class="form-control me-2" type="search" name="groupName" placeholder="Назва групи" aria-label="Search">
+                    <input value="Пошук" class="btn btnok" type="submit">
                 </form>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -39,17 +39,6 @@
                     </div>
                     <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 groupcontext ">
                         <h5 class="text-left"><a class="namegroups" href="{{route('Group', $group->id)}}">{{$group->title}}</a></h5>
-                        <span class="text-left">Учасників: 1</span>
-                    </div>
-
-                    <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-4">
-                        <div class="dropdown">
-                            <span class="btn-treedots">. . .</span>
-                            <div class="dropdown-content">
-                                <a href="" class="txt"><i class="far fa-plus-square ikonsdel"></i>Вступити</a><br>
-                                <a href="#" class="pt-1 text-danger txt"><i class="fas fa-external-link-square-alt text-danger ikonsblock py-1 "></i>Покинути</a>
-                            </div>
-                        </div>
                     </div>
 
                 </div>

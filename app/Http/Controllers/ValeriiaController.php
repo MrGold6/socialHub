@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class ValeriiaController extends Controller
 {
+    public function searchGroupsByName(Request $request){
+        return view('valeriia.groups', ['Groups' => GroupService::getByName($request['groupName'])]);
+
+    }
+
     public function home()
     {
         return view('valeriia.home', ['Posts' => PostService::getAllFriendPostsByUser(Auth::user()->getAuthIdentifier())]);

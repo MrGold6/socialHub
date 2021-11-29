@@ -14,7 +14,7 @@
 @endif
 
 @if(isset($post->idGroup) && $post->idGroup != 0)
-    <a href="{{route('Group', $post->idGroup)}}">
+    <a href="{{route('Group', $post->idGroup)}}" style="text-decoration: none;">
         <p><b>{{$post->titleGroup}}</b></p>
     </a>
 @endif
@@ -22,9 +22,8 @@
     <center>
         <center>
             @if(!empty(asset('ImagePost/'.$post->id.'.jpg')))
-                <a href="{{ route('currentPost', [$post->id]) }}">
                     <img src="{{ asset('ImagePost/'.$post->id.'.jpg') }}" class="image" width="450px"  alt="">
-                </a>
+
             @endif
         </center>
 
@@ -44,24 +43,12 @@
             <p style="padding: 0 15px 5px 15px; text-align: justify;">
                 {{$post->text}}
             </p>
-            <div class="post_description_wrap">
-                <div class="post_description_left">
-                    <form class="comment-form"  method="post">
-                        @csrf
-                        <input type="hidden"  name="postId">
-                        <div class="mb-3 comment-wrapper">
-                            <textarea aria-label="Добавьте комментарий..." data-testid="post-comment-text-area" placeholder="Добавьте комментарий..." id="comment" name="comment" class="my-comment" autocomplete="off" autocorrect="off"></textarea>
-                                <!-- <input type="text" class="form-control" id="comment" name="comment"> -->
-                        </div>
-                        <input type="submit" class="comment-btn" value="Коментувати">
-                    </form>
-                </div>
-                <div class="likes">
-                    <label id="likes">1</label>
-                        <i id="like" class="far fa-heart js-heart heart"></i>
-                    </div>
-                </div>
-            </div>
+            <p>
+                <a href="{{ route('currentPost', [$post->id]) }}" style="text-decoration: none; color: inherit; ">
+                    Переглянути більше
+                </a>
+            </p>
+        </div>
         </center>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');

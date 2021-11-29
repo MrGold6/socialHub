@@ -5,7 +5,7 @@
 
                 <a href="{{route('home')}}" style="text-decoration: none; color: inherit;">
                     <div class="header_logo_container">
-                        <span style="margin-left: 8px; background-color: #ffffff; border-radius: 5px; border: 2px solid #5281b9; padding: 2px; font-family: 'Cooper Black', sans-serif; font-size: 20px;"><b style="color: #5281b9; margin-right: 2px;">Net</b><b style="background-color: #5281b9; border-radius: 5px; color: #ffffff; padding-left: 3px; padding-right: 3px;">Hub</b></span>
+                        <span style="margin-left: 8px; font-size: 30px; background-color: #ffffff; padding: 2px; font-family: 'Cooper Black', sans-serif; font-size: 20px;"><b style="color: #5281b9; margin-right: 2px;">Net</b><b style="background-color: #5281b9; border-radius: 5px; color: #ffffff; padding-left: 3px; padding-right: 3px;">Hub</b></span>
                     </div>
                 </a>
 

@@ -63,3 +63,59 @@
     color: #5281b9;
 }
 
+.namegroups{
+    text-decoration: none;
+    background-color: #5281b9;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    -webkit-transition: 0.8s ease;
+}
+.namegroups:hover{
+    text-decoration: none;
+    background-color: #5281b9;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    width: 150px;
+    transition: all 0.8s ease;
+
+}
+
+.namegroups:before{
+    text-decoration: none;
+    background-color: #5281b9;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    transition: all 2s ease;
+}
+
+.namegroups:hover .first{
+    text-decoration: none;
+    background-color: #5281b9;
+    color: white;
+    display: none;
+
+}
+
+.namegroups .second{
+    text-decoration: none;
+    background-color: #5281b9;
+    color: white;
+    display: none;
+
+}
+
+.namegroups:hover .second{
+    text-decoration: none;
+    background-color: #5281b9;
+    color: white;
+    transition: all 1.5s ease;
+    display: inline;
+
+
+}

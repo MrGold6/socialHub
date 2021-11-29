@@ -34,11 +34,11 @@
                         @if(!empty($group->image))
                             <img style="width: 100px; border-radius: 100px;" src="{{ asset('ImageGroup/'.$group->image) }}">
                         @else
-                            <img style="width: 100px; border-radius: 100px;" src="{{ URL::to('./img/camera.png') }}" alt="User Photo">
+                            <img style="width: 100px; border-radius: 100px;" src="{{ URL::to('./img/camera.png') }}" alt="Group Photo">
                         @endif
                     </div>
                     <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-xs-12 groupcontext ">
-                        <h5 class="text-left"><a class="namegroups" href="{{route('Group', $group->id)}}">{{$group->title}}</a></h5>
+                        <h5 style="margin-top: 20px;"><a class="namegroups" href="{{route('Group', $group->id)}}">{{$group->title}}</a></h5>
                     </div>
 
                 </div>

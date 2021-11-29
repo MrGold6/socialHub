@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
 
     //lera
     //group post
-    Route::get('/', [ValeriiaController::class, 'home'])->middleware('auth');
+    Route::get('/', [ValeriiaController::class, 'home'])->middleware('auth')->name('home');
     Route::get('/createPostView/{id}', [ValeriiaController::class, 'createPostView'])->name('CreatePostView');
     Route::post('/createPost', [ValeriiaController::class, 'createPost'])->name('CreatePost');
     Route::get('/updateGroupView/{id}', [ValeriiaController::class, 'updateGroupView'])->name('UpdateGroupView');

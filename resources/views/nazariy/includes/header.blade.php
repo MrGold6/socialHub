@@ -2,9 +2,13 @@
     <div class="container">
         <div class="my-container">
             <div class="header_wrapper">
-                <div class="header_logo_container">
-                    <span style="margin-left: 8px; background-color: #ffffff; border-radius: 5px; border: 2px solid #5281b9; padding: 2px; font-family: 'Cooper Black', sans-serif; font-size: 20px;"><b style="color: #5281b9; margin-right: 2px;">Net</b><b style="background-color: #5281b9; border-radius: 5px; color: #ffffff; padding-left: 3px; padding-right: 3px;">Hub</b></span>
-                </div>
+
+                <a href="{{route('home')}}" style="text-decoration: none; color: inherit;">
+                    <div class="header_logo_container">
+                        <span style="margin-left: 8px; background-color: #ffffff; border-radius: 5px; border: 2px solid #5281b9; padding: 2px; font-family: 'Cooper Black', sans-serif; font-size: 20px;"><b style="color: #5281b9; margin-right: 2px;">Net</b><b style="background-color: #5281b9; border-radius: 5px; color: #ffffff; padding-left: 3px; padding-right: 3px;">Hub</b></span>
+                    </div>
+                </a>
+
                 <div class="header_user_container">
                     <a class="header_user_link">
                         <span class="header_user_name">{{ Auth::user()->firstName }}</span>

@@ -49,7 +49,7 @@
                                         <input type="hidden" name="firstUser" value="{{ $friend->firstUser }}">
                                         <input type="hidden" name="secondUser" value="{{ $friend->secondUser }}">
 
-                                        <input type="submit" class="btn-danger" style="width: 150px;" value="Видалити з друзів">
+                                        <input type="submit" class="setting_button" style="width: 160px; border: none; background-color: #af212b;" value="Видалити з друзів">
                                     </form>
                                 @endif
                             @endforeach
@@ -64,7 +64,7 @@
 
                                         <input type="hidden" name="firstUser" value="{{ $friend->firstUser }}">
 
-                                        <input type="submit" class="btn-primary" style="width: 150px;" value="Прийняти в друзі">
+                                        <input type="submit" class="setting_button" style="width: 150px; border: none;" value="Прийняти в друзі">
                                     </form>
                                 @endif
                             @endforeach
@@ -80,7 +80,7 @@
 
                                         <input type="hidden" name="secondUser" value="{{ $friend->secondUser }}">
 
-                                        <input type="submit" class="btn-primary" style="width: 150px;" value="Запит надіслано">
+                                        <input type="submit" class="setting_button" style="width: 150px; border: none;" value="Запит надіслано">
                                     </form>
                                 @endif
                             @endforeach
@@ -94,7 +94,7 @@
                                 <input type="hidden" name="firstUser" value="{{ \Illuminate\Support\Facades\Auth::id() }}">
                                 <input type="hidden" name="secondUser" value="{{ $User->id }}">
 
-                                <input type="submit" class="btn-primary" style="width: 150px;" value="Додати в друзі">
+                                <input type="submit" class="setting_button" style="width: 150px; border: none;" value="Додати в друзі">
                             </form>
                         @endif
 
@@ -103,7 +103,7 @@
     {{--                    @foreach ($Friend as $friend)--}}
     {{--                        {{ $friend }}--}}
     {{--                    @endforeach--}}
-                        <button  class="btn-primary message-btn" style="width: 200px;" >Написати повідомлення</button>
+                        <button  class="setting_button message-btn" style="width: 250px; border: none;" >Написати повідомлення</button>
                     @endif
 
 

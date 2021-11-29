@@ -25,8 +25,10 @@ class Message
         foreach($second as $arr){
             $idUsers[] = $arr->idUser;
         }
-        $idUsers[] = Auth::id();
 
+
+        $idUsers[] = Auth::id();
+        //dd($idUsers);
         $messageDB = DB::table('messages')
             ->select('messages.created_at as messageCreate', 'messages.id', 'messages.message', 'messages.idUser', 'messages.idChat', 'messages.viewed', 'users.firstName', 'users.middleName', 'users.lastName', 'users.email',  'users.birthday', 'users.image')
             ->join('users', 'users.id', '=', 'messages.idUser')
@@ -42,7 +44,8 @@ class Message
             $messagesChat[$message->idChat] = $message;
 
         $sortedArr = collect($messagesChat)->sortBy('messageCreate')->all();
-        //dd($sortedArr);
+//        dd($sortedArr);
+
         return $sortedArr;
 
 

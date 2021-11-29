@@ -4,16 +4,13 @@
             <div class="row">
                 <div class="col-md-1">
                     <div style="height: 50px; width: 50px; border-radius: 50px;" class="mt-2">
-                        <img style="width: 50px;" src="data:image/jpeg;base64,{{ base64_encode($comment->image) }}"/>
+                        <img style="width: 50px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($comment->image) }}"/>
                     </div>
-                    <p class="ml-1 mt-1">
-                        {{ $comment->firstName }}
-                    </p>
                 </div>
                 <div class="col-md-11">
                     <div class="ml-2">
                         <p>
-                            {{ $comment->comment }}
+                            {{ $comment->firstName }} - {{ $comment->comment }}
                         </p>
                         <div class="row">
                             @if($comment->idUser == \Illuminate\Support\Facades\Auth::id())

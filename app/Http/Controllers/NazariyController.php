@@ -26,7 +26,7 @@ class NazariyController extends Controller
     public function createPost(Request $request) {
         Posts::createPost($request);
         return Redirect::back();
-        return view('nazariy.page', ['User' => Users::getUserById(Auth::id()), 'Posts' => Posts::getUserPosts(Auth::id()), 'Friend' => Friends::getFriend(Auth::id())]);
+        //return view('nazariy.page', ['User' => Users::getUserById(Auth::id()), 'Posts' => Posts::getUserPosts(Auth::id()), 'Friend' => Friends::getFriend(Auth::id())]);
     }
 
     public function removeFriend(Request $request)

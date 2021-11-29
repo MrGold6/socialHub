@@ -103,7 +103,9 @@
     {{--                    @foreach ($Friend as $friend)--}}
     {{--                        {{ $friend }}--}}
     {{--                    @endforeach--}}
-                        <button  class="btn-primary message-btn" style="width: 200px;" >Написати повідомлення</button>
+                        <a href="{{ route('chat', $User->id) }}">
+                            <button  class="btn-primary message-btn" style="width: 200px;" >Написати повідомлення</button>
+                        </a>
                     @endif
 
 

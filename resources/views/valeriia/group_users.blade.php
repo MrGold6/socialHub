@@ -19,7 +19,9 @@
                         </a>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 pt-3 ">
-                        <h4 class="mt-0 name">{{$user->firstName}} {{$user->lastName}}</h4>
+                        <a href="{{ route('user', [$user->id]) }}" style="text-decoration: none;">
+                            <h4 class="mt-0 name">{{$user->firstName}} {{$user->lastName}}</h4>
+                        </a>
                         {{$user->email}}
                     </div>
 
@@ -28,19 +30,22 @@
                         <i class="mt-0"><i class="fas fa-gift ikons"></i>{{$user->birthday}} </i>
 
                     </div>
-
-                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-xs-12 pt-4">
-                        <div class="bnt">
-                            <a class="deletebtn" href="{{route('DeleteGroupUsers', $user->id)}}">
-                                Видалити
-                            </a>
+                    @if(Auth::user()->id==$Group->idUserOwner)
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-xs-12 pt-4">
+                            <div class="bnt">
+                                <a class="deletebtn" href="{{route('DeleteGroupUsers', $user->id)}}">
+                                    Видалити
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                 </div>
 
 
             @endforeach
+
+                <a class="namegroups" href="{{route('Group', $Group->id)}}">Повернутися</a>
         </div>
 
 @endsection

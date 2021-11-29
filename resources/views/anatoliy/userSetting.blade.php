@@ -16,36 +16,39 @@
                        <div class="cont">
                            <input type="file" class="form-text" name="image"/>
                        </div>
-                    <button class="btnDang px-3"  onclick='document.location="{{ route('deletePhoto') }}"'>Видалити фото</button>
+                        <a onclick='document.location="{{ route('deletePhoto') }}"'>
+                            <button class="btnDang px-3" onclick="event.preventDefault()">Видалити фото</button>
+                        </a>
                 </div>
 
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                     <div class="text-cnter">
                         <p><label style="color: #526bb9; font-size: 25px" class="">Ім'я: </label></p>
 
-                        <input class="inputname datainfo " type="text" value="{{$user->firstName}}">
+                        <input class="inputname datainfo " type="text" name="firstName" value="{{$user->firstName}}">
                     </div>
 
                     <div class="text-cnter">
                         <p><label style="color: #526bb9; font-size: 25px" class="mt-2">Прізвище: </label></p>
 
-                        <input class="inputname datainfo" type="text" value="{{$user->middleName}}">
+                        <input class="inputname datainfo" type="text" name="middleName" value="{{$user->middleName}}">
                     </div>
 
                     <div class="text-cnter">
                         <p><label style="color: #526bb9; font-size: 25px" class="mt-2">По-батькові: </label></p>
-                        <input class="inputname datainfo" type="text" value="{{$user->lastName}}">
+                        <input class="inputname datainfo" type="text" name="lastName" value="{{$user->lastName}}">
                     </div>
 
                     <div class="text-cnter">
                         <p><label style="color: #526bb9; font-size: 25px" class="mt-2">E-mail: </label></p>
-                        <input class="inputname datainfo" type="email" value="{{$user->email}}">
+                        <input class="inputname datainfo" type="email" name="email" value="{{$user->email}}">
                     </div>
 
                     <div class="text-cnter">
                         <p><label style="color: #526bb9; font-size: 25px" class="mt-2">День народження: </label></p>
-                        <input class="inputname datainfo" type="date" value="{{$user->birthday}}">
+                        <input class="inputname datainfo" type="date" name="birthday" value="{{$user->birthday}}">
                     </div>
+
 
                     <div class="text-cnter">
                         <input type="submit" class="btn btn-siniy" value="Змінити данні">

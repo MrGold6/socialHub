@@ -57,7 +57,7 @@
         }
     </style>
     <script>
-        var lastMessageId = {{ $messages[count($messages) - 1]->messageId }};
+        var lastMessageId = {{ isset($messages[count($messages) - 1]) ? ($messages[count($messages) - 1]->messageId) : 0 }};
         scroll({{ count($messages) * 100 }} + 'px')
         $('#sendMessage').click(function () {
             event.preventDefault();

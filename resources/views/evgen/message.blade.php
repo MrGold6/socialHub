@@ -11,14 +11,18 @@
                     </div>
                 </div>
                 <div class="col-1">
-                    <img style="width: 52px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($message->ownerImage) }}"/>
+                    <a href="{{ route('user', [$message->ownerMessage]) }}" style="text-decoration: none;">
+                        <img style="width: 52px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($message->ownerImage) }}"/>
+                    </a>
                 </div>
             </div>
         </div>
     @else
         <div class="row">
             <div class="col-1">
-                <img style="width: 52px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($user->image) }}"/>
+                <a href="{{ route('user', [$message->ownerMessage]) }}" style="text-decoration: none;">
+                    <img style="width: 52px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($user->image) }}"/>
+                </a>
             </div>
             <div class="col-9">
                 <div class="alert alert-secondary">

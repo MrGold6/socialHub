@@ -21,6 +21,11 @@ class GroupService
         return Group::all()->find($id);
     }
 
+    public static function getByName($name)
+    {
+        return Group::all()->where('title','=', $name);
+    }
+
     public static function getByOwner($id)
     {
         return Group::all()->where('idUserOwner','=', $id);

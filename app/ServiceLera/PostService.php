@@ -4,6 +4,7 @@ namespace App\ServiceLera;
 
 use App\Models\Group;
 use App\Models\Post;
+use App\Repository\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -40,9 +41,13 @@ class PostService
         $post->text = $request['text'];
         $post->idOwner  = $request['idOwner'];
         $post->idGroup = $request['idGroup'];
-
         $post->save();
 
+
+        $image = $request->file('upload_file');
+
+        if($image)
+            ImageService::saveImageToFolder($image,'/ImagePost', $post->id);
     }
 
     public static function delete($id)

@@ -31,12 +31,19 @@ class AnatoliyController extends Controller
 
         $friend = DB::table('users')->select('*')->whereIn('id', $AllFriendIdArray)->get();
 
-        $AllFriendIdArrayRequest = $this->searchfriend($id, 0,0);
-
+        $AllFriendIdArrayRequest = $this->getRequest();
         $requestfriend = DB::table('users')->select('*')->whereIn('id', $AllFriendIdArrayRequest)->get();
 
         return view('anatoliy.friend', ['friends'=>$friend], ['requestsFriends'=>$requestfriend]);
 
+    }
+
+    public function getRequest() {
+        $ids = DB::table('friends')->select('idFirstUser')->where('confirm', '=', '0')->where('idSecondUser', '=', Auth::id())->get()->toArray();
+        $idUser = array();
+        foreach ($ids as $id)
+            $idUser[] = $id->idFirstUser;
+        return $idUser;
     }
 
     public function notfriend(){
@@ -159,21 +166,19 @@ class AnatoliyController extends Controller
         $user->birthday = $request['birthday'];
         $user->email  = $request['email'];
 
-        $file = $request->file('image');
-        $contents = $file->openFile()->fread($file->getSize());
-        $user->image = $contents;
-
+        if($request['image']) {
+            $file = $request->file('image');
+            $contents = $file->openFile()->fread($file->getSize());
+            $user->image = $contents;
+        }
         $user->save();
 
         return redirect()->route('user', Auth::id());
     }
-    //deletePhoto
     public function deletePhoto()
     {
         $user = (new User)::all()->find(Auth::id());
-
         $user->image = null;
-
         $user->save();
 
         return redirect()->route('user', Auth::id());

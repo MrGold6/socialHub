@@ -17,36 +17,74 @@ class Message
 
 //        Message::all()->where('idUser', '=', $idUser)->latest();
 
-        $idUsers = array();
-
+        $idChats = array();
         foreach($first as $arr){
-            $idUsers[] = $arr->idUser;
+            $idChats[] = $arr->id;
         }
         foreach($second as $arr){
-            $idUsers[] = $arr->idUser;
+            $idChats[] = $arr->id;
         }
 
+        $firstUser = DB::table('chats')
+            ->where('idUserFirst',  '=', Auth::id())
+            ->select('chats.id as idChat', 'idUserSecond as idUser', 'users.image','users.firstName', 'users.lastName', 'users.middleName')
+            ->join('users', 'users.id', '=', 'chats.idUserSecond')
+            ->get();
+        $secondUser = DB::table('chats')
+            ->where('idUserSecond',  '=', Auth::id())
+            ->select('chats.id as idChat', 'idUserFirst as idUser', 'users.image','users.firstName', 'users.lastName', 'users.middleName')
+            ->join('users', 'users.id', '=', 'chats.idUserFirst')
+            ->get();
 
-        $idUsers[] = Auth::id();
-        //dd($idUsers);
-        $messageDB = DB::table('messages')
-            ->select('messages.created_at as messageCreate', 'messages.id', 'messages.message', 'messages.idUser', 'messages.idChat', 'messages.viewed', 'users.firstName', 'users.middleName', 'users.lastName', 'users.email',  'users.birthday', 'users.image')
-            ->join('users', 'users.id', '=', 'messages.idUser')
-            ->whereIn('idUser', $idUsers)
-            ->orderBy('messages.id')->get();
-        //dd($messageDB);
-        $messages = array();
-        foreach($messageDB as $message)
-            $messages[$message->idUser] = $message;
+        $idUser = array();
+        foreach($firstUser as $arr){
+            $idUser[] = $arr;
+        }
+        foreach($secondUser as $arr){
+            $idUser[] = $arr;
+        }
 
-        $messagesChat = array();
-        foreach($messageDB as $message)
-            $messagesChat[$message->idChat] = $message;
+//        dd($idUser);
 
-        $sortedArr = collect($messagesChat)->sortBy('messageCreate')->all();
-//        dd($sortedArr);
+//        $idUsers[] = Auth::id();
+//        dd($idChats);
+//        $messageDB = DB::table('messages')
+//            ->select('messages.created_at as messageCreate', 'messages.id', 'messages.message', 'messages.idUser', 'messages.idChat', 'messages.viewed', 'users.firstName', 'users.middleName', 'users.lastName', 'users.email',  'users.birthday', 'users.image')
+//            ->join('users', 'users.id', '=', 'messages.idUser')
+//            ->whereIn('idUser', $idUsers)
+//            ->orderBy('messages.id')->get();
 
-        return $sortedArr;
+//        $temp = DB::select(DB::raw("
+//            SELECT m1.*
+//            FROM messages m1 LEFT JOIN messages m2
+//             ON (m1.idChat = m2.idChat AND m1.id < m2.id)
+//            WHERE m2.id IS NULL"));
+
+        $lastMessage = DB::select(DB::raw("
+            SELECT m1.*
+            FROM messages m1
+            LEFT JOIN messages m2
+             ON (m1.idChat = m2.idChat AND m1.id < m2.id)
+            WHERE m2.id IS NULL
+            ORDER BY m1.created_at DESC"));
+
+        $myLastMessage = array();
+        foreach($lastMessage as $arr) {
+            foreach($idChats as $chat) {
+                if($arr->idChat == $chat) {
+                    $myLastMessage[] = $arr;
+                }
+            }
+        }
+
+//        dd($myLastMessage);
+
+
+
+        return [
+            'message' => $myLastMessage,
+            'user' => $idUser
+        ];
 
 
 //        $latest = DB::table('messages')

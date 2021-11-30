@@ -43,16 +43,13 @@
             <p style="padding: 0 15px 5px 15px; text-align: justify;">
                 {{$post->text}}
             </p>
-            <p class="text-center showmore">
-                <a class="ashow" href="{{ route('currentPost', [$post->id]) }}" style="text-decoration: none;">
-                    <span style="color: #5281b9" class="first">Переглянути більше </span>
-                    <span class="second"><i class="fas fa-chevron-down " style="color: #5281b9; font-size: 25px;"></i></span>
+            <p>
+                <a href="{{ route('currentPost', [$post->id]) }}">
+                    Переглянути більше
                 </a>
             </p>
-
         </div>
         </center>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
         .fas {
@@ -61,22 +58,6 @@
         .comment {
             text-align: left;
             display: inline-flexbox;
-        }
-
-        .showmore{
-            margin-top: 10px;
-        }
-
-        .ashow:hover .first{
-            display: none;
-        }
-
-        .ashow .second{
-            display: none;
-        }
-
-        .ashow:hover .second{
-            display: inline;
         }
 
         .post_description_wrap {
@@ -269,5 +250,3 @@
             color: #666;
         }
     </style>
-
-

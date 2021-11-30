@@ -6,7 +6,12 @@
             <div class="row">
                 <div class="col-md-1">
                     <div style="height: 52px; width: 52px;" class="mt-2">
-                        <img style="width: 52px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($comment->image) }}"/>
+{{--                        <img style="width: 52px; border-radius: 100px;" src="data:image/jpeg;base64,{{ base64_encode($comment->image) }}"/>--}}
+                        @if(!empty($comment->image))
+                            <img style="width: 50px; border-radius: 50%;" src="data:image/jpeg;base64,{{ base64_encode($comment->image) }}"/>
+                        @else
+                            <img style="width: 50px; border-radius: 50%;" src="{{ URL::to('./img/camera.png') }}">
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-11">

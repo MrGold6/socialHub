@@ -6,6 +6,13 @@
 
 
         <div class="row">
+
+            <a class="namegroups" href="{{route('Group', $Group->id)}}">
+                <span class="first">Повернутися</span>
+                <span class="second"><i class="fas fa-arrow-left"></i> <b>Повернутися</b></span>
+            </a>
+
+
             @foreach ($Users as $user)
 
                 <div class="row rowmain py-1 my-2">
@@ -45,7 +52,7 @@
 
             @endforeach
 
-                <a class="namegroups" href="{{route('Group', $Group->id)}}">Повернутися</a>
+
         </div>
 
 @endsection

@@ -9,16 +9,16 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 upload-btn-wrapper text-center">
                     @if(!empty($user->image))
-                    <img class="" style="width: 300px; border-radius: 15px;" src="data:image/jpeg;base64,{{ base64_encode($user->image) }}"/><br />
+                        <img class="" style="width: 300px; border-radius: 15px;" src="data:image/jpeg;base64,{{ base64_encode($user->image) }}"/><br />
                     @else
                         <img class="" style="width: 300px; border-radius: 15px;" src="{{ URL::to('./img/camera.png') }}" alt="User Photo">
                     @endif
-                       <div class="cont">
-                           <input type="file" class="form-text" name="image"/>
-                       </div>
-                        <a onclick='document.location="{{ route('deletePhoto') }}"'>
-                            <button class="btnDang px-3" onclick="event.preventDefault()">Видалити фото</button>
-                        </a>
+                    <div class="cont">
+                        <input type="file" class="form-text" name="image"/>
+                    </div>
+                    <a onclick='document.location="{{ route('deletePhoto') }}"'>
+                        <button class="btnDang px-3" onclick="event.preventDefault()">Видалити фото</button>
+                    </a>
                 </div>
 
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">

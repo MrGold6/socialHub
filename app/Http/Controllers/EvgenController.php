@@ -149,7 +149,8 @@ class EvgenController extends Controller
             ->select('messages.id as messageId', 'messages.message as message', 'messages.idUser as ownerMessage', 'users.id', 'users.firstName as firstName', 'users.middleName as middleName', 'users.image as ownerImage')
             ->orderBy('messages.id')
             ->where('idChat', '=', $request['chat'])->where('messages.id', '>', $request['lastMessageId'])->get();
-
+        if($request['lastMessageId'] == $messages[count($messages) - 1]->messageId)
+            return null;
         $user = DB::table('users')->find($request['userId']);
         if(count($messages) > 0)
             return [view('evgen.chatMessages', ['messages' => $messages, 'user' => $user])->render(), $messages[count($messages) - 1]->messageId];

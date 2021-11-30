@@ -44,7 +44,7 @@
                 {{$post->text}}
             </p>
             <p>
-                <a href="{{ route('currentPost', [$post->id]) }}">
+                <a href="{{ route('currentPost', [$post->id]) }}" style="text-decoration: none; color: inherit; ">
                     Переглянути більше
                 </a>
             </p>

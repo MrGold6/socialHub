@@ -43,9 +43,10 @@
             <p style="padding: 0 15px 5px 15px; text-align: justify;">
                 {{$post->text}}
             </p>
-            <p>
-                <a href="{{ route('currentPost', [$post->id]) }}">
-                    Переглянути більше
+            <p class="text-center showmore">
+                <a class="ashow" href="{{ route('currentPost', [$post->id]) }}" style="text-decoration: none;">
+                    <span style="color: #5281b9" class="first">Переглянути більше </span>
+                    <span class="second"><i class="fas fa-chevron-down " style="color: #5281b9; font-size: 25px;"></i></span>
                 </a>
             </p>
         </div>
@@ -63,6 +64,22 @@
         .post_description_wrap {
             display: flex;
             justify-content: space-between;
+        }
+
+        .showmore{
+            margin-top: 10px;
+        }
+
+        .ashow:hover .first{
+            display: none;
+        }
+
+        .ashow .second{
+            display: none;
+        }
+
+        .ashow:hover .second{
+            display: inline;
         }
 
         .post_wrapper {

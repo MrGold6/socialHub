@@ -45,8 +45,8 @@
 
                             @foreach ($Friend['confirm'] as $friend)
                                 @if(($friend->firstUser == \Illuminate\Support\Facades\Auth::id() && $friend->secondUser == $User->id) || ($friend->secondUser == \Illuminate\Support\Facades\Auth::id() && $friend->firstUser == $User->id))
-                                    <form action="{{ route('removeFriend') }}" method="post" enctype="multipart/form-data">
-                                        @csrf
+                                    <form action="{{ route('removeFriend') }}" method="get" enctype="multipart/form-data">
+
 
                                         <input type="hidden" name="firstUser" value="{{ $friend->firstUser }}">
                                         <input type="hidden" name="secondUser" value="{{ $friend->secondUser }}">
@@ -98,12 +98,6 @@
                             </form>
                         @endif
 
-
-
-
-                        {{--                    @foreach ($Friend as $friend)--}}
-                        {{--                        {{ $friend }}--}}
-                        {{--                    @endforeach--}}
                         <a href="{{ route('chat', $User->id) }}">
                             <button  class="setting_button message-btn" style="width: 250px; border: none;" >Написати повідомлення</button>
                         </a>

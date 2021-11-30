@@ -59,45 +59,56 @@
     </style>
     <script>
         var lastMessageId = {{ isset($messages[count($messages) - 1]) ? ($messages[count($messages) - 1]->messageId) : 0 }};
+        let refreshChat;
+        setRefreshInterval()
         scroll({{ count($messages) * 100 }} + 'px')
         $('#sendMessage').click(function () {
             event.preventDefault();
+            clearInterval(refreshChat)
             let message = $('#message').val();
-            $.ajax({
-                url: '{{ route('sendMessage') }}',
-                method: 'post',
-                data: {
-                    _token : $('meta[name="csrf-token"]').attr('content'),
-                    chat: {{ $chat }},
-                    message: message
-                },
-                success: function (data) {
-                    refresh(data)
+            $('#message').val('');
+            setTimeout(() => {
+                if(message) {
+                    $.ajax({
+                        url: '{{ route('sendMessage') }}',
+                        method: 'post',
+                        data: {
+                            _token : $('meta[name="csrf-token"]').attr('content'),
+                            chat: {{ $chat }},
+                            message: message
+                        },
+                        success: function (data) {
+                            refresh(data)
+                            setRefreshInterval()
+                        }
+                    })
                 }
-            })
+            }, 500)
         })
+        function setRefreshInterval() {
+            refreshChat = setInterval(function () {
+                $.ajax({
+                    url: '{{ route('refreshChat') }}',
+                    method: 'post',
+                    data: {
+                        _token : $('meta[name="csrf-token"]').attr('content'),
+                        lastMessageId: lastMessageId,
+                        userId: {{ $user->id }},
+                        chat: {{ $chat }}
+                    },
+                    success: function (data) {
+                        if(data)
+                            refresh(data)
+                    }
+                })
+            }, 1000)
+        }
         function refresh(data) {
             $('.allMessage').append(data[0])
             $('#message').val('')
             scroll('150px')
             lastMessageId = data[1]
         }
-        setInterval(function () {
-            $.ajax({
-                url: '{{ route('refreshChat') }}',
-                method: 'post',
-                data: {
-                    _token : $('meta[name="csrf-token"]').attr('content'),
-                    lastMessageId: lastMessageId,
-                    userId: {{ $user->id }},
-                    chat: {{ $chat }}
-                },
-                success: function (data) {
-                    if(data)
-                        refresh(data)
-                }
-            })
-        }, 1000)
         function scroll(scroll) {
             $('.allMessage').animate({scrollTop: '+=' + scroll}, 150)
         }
